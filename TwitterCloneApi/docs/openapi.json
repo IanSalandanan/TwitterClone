@@ -28,7 +28,7 @@
     { "name": "Followers", "description": "Follower endpoints" }
   ],
   "paths": {
-    "/": {
+    "/api": {
       "get": {
         "summary": "Test endpoint",
         "description": "Used to check if the API is up and working",
