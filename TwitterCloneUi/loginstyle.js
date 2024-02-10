@@ -11,8 +11,7 @@ function logSign(){
     }
 }
 
-function regisPass(event) {
-    event.preventDefault();
+function regisPass() {
     const username = document.getElementById('username-regis').value;
     const password = document.getElementById('password-regis').value;
     const confirmPass = document.getElementById('confirm-password').value;
@@ -23,45 +22,6 @@ function regisPass(event) {
     } else {
         register(username, password);
     }
-}
-
-function verifyLog() {
-    $.getJSON('AUTH.json', function(json) {
-        var users = [];
-        const username = document.getElementById('username-log').value;
-        const password = document.getElementById('password-regis').value;
-        for (var key in json) {
-            if (json.hasOwnPropert(key)) {
-                var item = json[key];
-                users.push({
-                    usersName: item.username,
-                    userPass: item.password
-                });
-            }
-        }
-        if ((username in users) && (password in users)) {
-            alert('Successfully Logged In')
-            login()
-        } else {
-            alert('Username/Password is incorrect.')
-            return false;
-        }
-    })
-}
-
-async function login() {
-    const res = await fetch('http://localhost:3000/api/v1/auth/login', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            username: "joblipat",
-            password: "password"
-        })
-    })
-    const token = await res.text();
-    console.log(token);
 }
 
 async function register(username, password) {
@@ -87,9 +47,47 @@ async function register(username, password) {
     } catch (error) {
         console.error('Error Signing Up:', error);
     }
-
-    localStorage.setItem = res.text();
 }
+
+function loginCheck(){
+    const usernamelog = document.getElementById('username-log').value;
+    const passwordlog = document.getElementById('password-log').value;
+    logInNow(usernamelog, passwordlog);
+}
+
+async function logInNow(usernamelog, passwordlog){
+    try {
+        const res = await fetch('http://localhost:3000/api/v1/auth/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                username: 'joblipat',
+                password: 'password'
+            })
+        })
+        if (res.ok) {
+            const token = await res.text();
+            localStorage.setItem('token', token);
+            window.location.href = "http://127.0.0.1:5500/TwitterCloneUi/timeline.html"
+        } else {
+            const error = await res.json();
+            console.error(error);
+        }
+    } catch (error) {
+        console.error('Error Logging In:', error);
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    const loginButton = document.getElementById("login-button");
+
+    loginButton.addEventListener("click", async function (event) {
+        event.preventDefault(); // Prevent the default form submission
+        await loginCheck(); // Call the login function when the button is clicked
+    });
+});
 
 var signx = document.getElementById('signup-btn');
 var signy = document.getElementById('login-btn');
