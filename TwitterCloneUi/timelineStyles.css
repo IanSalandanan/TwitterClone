@@ -132,7 +132,7 @@ body {
     outline: none;
 }
 
-.text-area {
+#text-area {
     background-color: rgba(240, 240, 240, 0);
     width: 680px;
     height: 80px;
@@ -152,7 +152,7 @@ body {
     appearance: none;
 }
 
-.post-button {
+#post-button {
     border: none;
     color: black;
     font-weight: 900;

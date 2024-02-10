@@ -26,11 +26,11 @@
                     password: "password"
                 })
             })
-            return await res.text()
+            const token = await res.text();
         }
 
         async function login() {
-            const res = await fetch("/api/v1/auth/login", {
+            const res = await fetch("/api/v1/auth/register", {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json'
@@ -40,9 +40,6 @@
                     password: "password"
                 })
             })
-            const token = await res.text()
-            console.log(token);
-
         }
 
         async function start() {

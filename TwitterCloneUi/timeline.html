@@ -60,8 +60,8 @@
             <div class="post-field">
                 <form>
                     <div class="post-field-input">
-                        <textarea class="text-area" maxlength="280" placeholder="What's Happening?"></textarea>
-                        <button type="submit" class="post-button">Post</button>
+                        <textarea id="text-area" maxlength="280" placeholder="What's Happening?"></textarea>
+                        <button type="submit" id="post-button" onclick="postTextAreaValueToAPI(event)">Post</button>
                     </div>
                 </form>
             </div>
@@ -251,7 +251,7 @@
     </div>
     <!--WIDGET MENU-->
 
-    <script src="timeline.html"></script>
+    <script src="timeline.js"></script>
 
 </body>
 </html>
