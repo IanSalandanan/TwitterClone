@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Twatter Login Page</title>
+        <link rel="stylesheet" href="loginstyle.css">
+    </head>
+    <body>
+        <div id="login-box">
+            <form name="login-form" onsubmit="return verifyLog()">
+                <div id="login-box-form">
+                    <h2>Sign in to Twatter</h2>
+                    <input id="username-log" type="text" placeholder="Username" required>
+                    <input id="password-log" type="password" placeholder="Password" required>
+                    <button id="login-button" type="sumbit">Login</button>
+                </div>
+            </form>
+            <div id="login-box-form">
+                <hr>
+                <span>Or</span>
+                <p>Don't have an account?</p>
+            </div>
+            <form>
+                <div id="login-box-form">
+                    <button type="button" id="signup-btn" onclick="logSign()">Sign Up</button>
+                </div>
+            </form>
+        </div>
+        <div id="signup-box">
+            <form name="sign-up-form">
+                <div id="signup-box-form">
+                    <h2>Sign Up</h2>
+                    <input id="username-regis" type="text" placeholder="Username" required>
+                    <input id="password-regis" type="password" placeholder="Password" required>
+                    <input id="confirm-password" type="password" placeholder="Confirm Password" required>
+                    <button id="register-button" type="submit" onclick="regisPass(event)">Register</button>
+                </div>
+            </form>
+            <div id="signup-box-form">
+                <hr>
+                <span>Or</span>
+            <p>Already have an account?</p>
+            </div>
+            <form>
+                <div id="signup-box-form">
+                    <button type="button" id="login-btn" onclick="logSign()">Log In</button>
+                </div>
+            </form>
+        </div>
+        <script src="loginstyle.js"></script>
+    </body>
+</html>
