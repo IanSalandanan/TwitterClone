@@ -1,6 +1,10 @@
 import fs from "fs";
 import path from "path";
-const rootFolder = "/tmp";
+import dotenv from "dotenv";
+dotenv.config();
+
+const rootFolder = process.env["DATA_FOLDER"] ?? "/tmp";
+
 function saveData(key, value) {
   ensureRootFolderExists();
 

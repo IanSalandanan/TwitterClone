@@ -1,10 +1,11 @@
+
+
 import express from "express";
 
 import cors from "cors";
-import dotenv from "dotenv";
+
 
 import swaggerUi from "swagger-ui-express";
-import YAML from "yamljs";
 
 import authRoutes from "./routes/AuthRoutes.js";
 import postsRoutes from "./routes/PostsRoutes.js";
@@ -13,7 +14,7 @@ import openApiSpecs from "./docs/openapi.json" with { type: "json" };
 
 const app = express();
 
-dotenv.config();
+
 
 app.use(cors());
 app.use(express.json());
