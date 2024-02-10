@@ -2,10 +2,10 @@
   "name": "module1projectbackend",
   "version": "1.0.0",
   "description": "A simple backend application for a twitter-like web application",
-  "main": "index.js",
+  "main": "main.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon index.js",
+    "dev": "nodemon main.js",
     "test": "jest"
   },
   "author": "",

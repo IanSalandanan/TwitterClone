@@ -18,7 +18,7 @@ Follow these steps to set up and run the Twitter Clone project:
    Make sure you have Node.js installed on your system. If not, download and install it from the official website.
 
 2. **Fork and Clone the Repository**:
- 
+
    - Clone your forked repository to your local machine using Git.
 
 3. **Install Dependencies**:
@@ -56,5 +56,18 @@ Follow these steps to set up and run the Twitter Clone project:
    - Add your HTML, CSS, and JS files to build the Twitter Clone interface.
 
 Remember: **Do not modify the `TwitterCloneApi` folder**; it contains essential API code.
+
+## Deployment
+
+To deploy this application you need to to use netlify. See the [documentation](https://docs.netlify.com/) to see how deployments are done in Netlify.
+
+The netlify.toml file contains nearly all the necessary values needed for deploying the application. There are no additional values needed to be set up except the JWT_KEY environment variable
+
+### Setting up the JWT_KEY
+
+- To setup the JWT_KEY environment variable, you would first need to generate a secret key. You may refer to [this](https://dev.to/tkirwa/generate-a-random-jwt-secret-key-39j4) tutorial for generating a secret key.
+  - Once generated, your private key may look something like this `ddcb75b4f402f240234eec4bf175fa9e8c15aea5...`
+- Once you have created a secret key, you need to add your private key as an environment variable. The key must be `JWT_KEY` and the value is your private key.
+  - You may refer to [this](https://docs.netlify.com/environment-variables/get-started/#site-environment-variables) documentation for a tutorial on how to set environment variables in netlify
 
 Happy coding! 🚀🐦

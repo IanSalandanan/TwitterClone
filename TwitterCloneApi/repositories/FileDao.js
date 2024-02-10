@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-const rootFolder = "../Temp";
+const rootFolder = "/tmp";
 function saveData(key, value) {
   ensureRootFolderExists();
 
