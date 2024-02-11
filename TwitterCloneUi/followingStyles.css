@@ -1,0 +1,263 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;1,300&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: poppins;
+}
+
+/*SIDEBAR MENU*/
+
+body {
+    display: flex;
+    height: 100vh;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 40px;
+
+    background-image: url(./assets/spectrum.gif);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    backdrop-filter: blur(15px);
+}
+
+.sidebar {
+    flex: 0.2;
+    min-width: 230px;
+    margin-top: 20px;
+    margin-left: 120px;
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 95vh;
+}
+
+.sidebar {
+    background-color: rgba(240, 240, 240, 0.2);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 6px rgb(1, 1, 1, 0.1);
+    border-radius: 20px;
+}
+
+.sidebarOpt {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.sidebarOpt .material-symbols-outlined {
+    font-size: 30px;
+    padding: 20px;
+}
+
+.sidebarOpt, h2 {
+    font-weight: 800;
+    font-size: 20px;
+    margin-right: 20px;
+    font-family: poppins;
+}
+
+.side-header {
+    display: flex;
+}
+
+#owl {
+    margin-top: 1.5rem;
+    width: 70px;
+    height: 40px;
+}
+
+.logo {
+    font-family: poppins;
+    margin-bottom: 5rem;
+    margin-top: 1.5rem;
+    margin-left: .5rem;
+}
+
+.sidebarOpt {
+    border-radius: 30px;
+    color: black;
+}
+
+/*END OF SIDEBAR MENU*/
+
+
+/*FEED*/
+
+.feed-container {
+    margin-top: .3rem;
+    background-color: rgba(48,48,57,255);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 6px rgb(1, 1, 1, 0.1);
+    border-radius: 20px;
+    height: 18vh;
+    padding-bottom: 2rem;
+    /* position: sticky;
+    z-index: 1;
+    top: 0; */
+    
+}
+
+.feed {
+    padding-left: 2rem;
+    margin-top: 1rem;
+    flex: 0.5;
+    min-width: fit-content;
+    overflow-y: scroll;
+}
+
+.feed::-webkit-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+
+/* END OF FEED */
+
+/* User Following Page Structure */
+
+ #user__structureContainer{
+    padding:30px;  
+ }
+
+ #user__headerText h3{
+    font-size: 20px;
+    margin-bottom: 20px;
+ }
+
+ #user__headerText p{
+    margin-top: -5px;
+ }
+
+ #user__body {
+    margin-top: -50px;
+    margin-left: 40px;
+ }
+
+#accounts-followed-container {
+    text-align: center; 
+    margin-top: -15px;
+}
+
+#accounts-followed {
+    display: inline-block;
+    font-weight: 600;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.317) ;
+    padding-bottom: 5px;
+}
+
+
+/* Following structure */
+
+.follow__structure{        
+    background-color: rgba(240, 240, 240, 0.2);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 6px rgb(1, 1, 1, 0.1);
+    border-radius: 20px;
+    padding:10px;
+    height: auto;
+    margin-top: 2rem
+}
+
+.follow__avatar img{
+    height: 40px;
+}
+
+.follow__structureContainer{
+    display: flex;
+    align-items: flex-start; 
+    margin-top:15px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15) ;
+}
+
+.follow__body{
+    margin-bottom: 5px;
+    flex: 1;
+    padding: 10px;
+
+}
+
+.follow__avatar{
+    padding: 20px;
+}
+
+.follow-btn {   
+    position: relative;
+    border-color: rgb(156, 156, 156);
+    color: rgb(156, 156, 156); 
+    font-size: 11px;
+    font-weight: 900;
+    background-color: rgba(112, 112, 112, 0);
+    width: 81px;
+    height: 40px;
+    border-radius: 20px;
+    margin-left: 300px;  
+    margin-top: -10px  
+}
+
+.follow__headerText h3{
+   font-size: 15px;
+   margin-bottom: 5px;
+}
+
+.follow__headerSpecial {
+    position: relative;
+    margin-top: -10px;
+    font-size: 12px;
+    color: rgb(156, 156, 156);
+    font-weight: 600;
+}
+
+.follow__headerDesc {
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+
+
+/*WIDGET*/
+
+.widgets-container {
+    flex: 0.2;
+    min-width: 230px;
+    margin-top: 20px;
+    margin-left: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 50vh;
+    
+    margin-top: 1.3rem;
+    background-color: rgba(240, 240, 240, 0.2);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 6px rgb(1, 1, 1, 0.1);
+    border-radius: 20px;
+}
+
+.widget-header {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+
+    font-family: poppins;
+    margin-bottom: 5rem;
+    margin-top: 1rem;
+    margin-left: 1rem;
+}
+
+.widget-text {
+    margin-left: 20px;
+    margin-bottom: 7px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.widget-text h2 {
+    font-weight: 800;
+    font-size: 20px;
+    margin-right: 20px;
+    font-family: poppins;
+}
+
+
+
