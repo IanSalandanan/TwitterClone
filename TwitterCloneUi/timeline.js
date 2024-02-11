@@ -31,6 +31,11 @@ function postTextAreaValueToAPI(event) {
       });
 }
 
+function logOut(event) {
+  window.location.href = "login.html";
+  localStorage.clear();
+}
+
 const token = localStorage.getItem('token');
 fetch('http://localhost:3000/api/v1/posts',{
   method :'GET',

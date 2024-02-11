@@ -1,3 +1,5 @@
+localStorage.clear();
+
 function regisPass() {
     const username = document.getElementById('username-regis').value;
     const password = document.getElementById('password-regis').value;

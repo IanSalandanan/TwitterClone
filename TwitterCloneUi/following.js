@@ -1,5 +1,3 @@
-
-
 // Function to retrieve username from localStorage
 function getUsernameFromLocalStorage() {
     const token = localStorage.getItem('token');
@@ -31,4 +29,5 @@ function displayUsername(){
 document.addEventListener("DOMContentLoaded", function() {
     displayUsername();
 });
+
 
