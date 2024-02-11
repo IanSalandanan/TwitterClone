@@ -67,4 +67,14 @@ function getFollowingUsernames(usernameOfFollower) {
   return user.following;
 }
 
-export default { createUser, followUser, getFollowingUsernames, unfollowUser };
+function getAllUsers() {
+  return Object.keys(users);
+}
+
+export default {
+  createUser,
+  followUser,
+  getFollowingUsernames,
+  unfollowUser,
+  getAllUsers,
+};

@@ -6,7 +6,10 @@
     "version": "0.0.1"
   },
   "servers": [
-    { "url": "http://localhost:3000", "description": "Local server" },
+    {
+      "url": "http://localhost:3000",
+      "description": "Local server"
+    },
     {
       "url": "https://twitter-clone-api.herokuapp.com",
       "description": "Production server"
@@ -22,10 +25,26 @@
     }
   },
   "tags": [
-    { "name": "Test", "description": "Test endpoints" },
-    { "name": "Auth", "description": "Authentication endpoints" },
-    { "name": "Posts", "description": "Post endpoints" },
-    { "name": "Followers", "description": "Follower endpoints" }
+    {
+      "name": "Test",
+      "description": "Test endpoints"
+    },
+    {
+      "name": "Auth",
+      "description": "Authentication endpoints"
+    },
+    {
+      "name": "Posts",
+      "description": "Post endpoints"
+    },
+    {
+      "name": "Users",
+      "description": "Users endpoints"
+    },
+    {
+      "name": "Followers",
+      "description": "Follower endpoints"
+    }
   ],
   "paths": {
     "/api": {
@@ -33,7 +52,11 @@
         "summary": "Test endpoint",
         "description": "Used to check if the API is up and working",
         "tags": ["Test"],
-        "responses": { "200": { "description": "API is up and working" } }
+        "responses": {
+          "200": {
+            "description": "API is up and working"
+          }
+        }
       }
     },
     "/api/v1/auth/register": {
@@ -61,8 +84,12 @@
           }
         },
         "responses": {
-          "200": { "description": "Register successful" },
-          "400": { "description": "Bad Request" }
+          "200": {
+            "description": "Register successful"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
         }
       }
     },
@@ -108,7 +135,9 @@
               }
             }
           },
-          "400": { "description": "Bad Request" }
+          "400": {
+            "description": "Bad Request"
+          }
         }
       }
     },
@@ -117,12 +146,19 @@
         "summary": "Get Post",
         "description": "Allows you to get posts of the logged in user",
         "tags": ["Posts"],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "parameters": [
           {
             "in": "query",
             "name": "user",
             "description": "If a value is provided, the endpoint will get the posts of the specified user",
-            "schema": { "type": "string" },
+            "schema": {
+              "type": "string"
+            },
             "required": false
           }
         ],
@@ -139,7 +175,7 @@
                       "id": {
                         "type": "string",
                         "description": "Post ID",
-                        "examples": [1]
+                        "examples": ["1"]
                       },
                       "content": {
                         "type": "string",
@@ -151,12 +187,12 @@
                       "likes": {
                         "type": "integer",
                         "description": "Number of likes",
-                        "examples": [1]
+                        "examples": ["1"]
                       },
                       "liked": {
                         "type": "boolean",
                         "description": "Whether the post has been liked by the logged in user",
-                        "examples": [true]
+                        "examples": ["true"]
                       },
                       "createdAt": {
                         "type": "string",
@@ -166,28 +202,29 @@
                     }
                   },
                   "examples": [
-                    [
-                      {
-                        "id": 1,
-                        "content": "Hello world. This is the first post",
-                        "likes": 1,
-                        "liked": true,
-                        "createdAt": "2021-08-01T00:00:00.000Z"
-                      },
-                      {
-                        "id": 2,
-                        "content": "Good morning. This is the second post",
-                        "likes": 2,
-                        "liked": true,
-                        "createdAt": "2021-08-01T00:00:00.000Z"
-                      }
-                    ]
+                    null,
+                    {
+                      "id": "1",
+                      "content": "Hello world. This is the first post",
+                      "likes": "1",
+                      "liked": "true",
+                      "createdAt": "2021-08-01T00:00:00.000Z"
+                    },
+                    {
+                      "id": "2",
+                      "content": "Good morning. This is the second post",
+                      "likes": "2",
+                      "liked": "true",
+                      "createdAt": "2021-08-01T00:00:00.000Z"
+                    }
                   ]
                 }
               }
             }
           },
-          "400": { "description": "Bad Request" }
+          "400": {
+            "description": "Bad Request"
+          }
         }
       },
       "post": {
@@ -213,8 +250,12 @@
           }
         },
         "responses": {
-          "201": { "description": "Created" },
-          "400": { "description": "Bad request" }
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad request"
+          }
         }
       }
     },
@@ -223,6 +264,22 @@
         "summary": "Like or Unlike Post",
         "description": "Like or Unlike provided post",
         "tags": ["Posts"],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "Post ID",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -238,9 +295,43 @@
             }
           },
           "responses": {
-            "200": { "description": "Post has been liked or unliked" },
-            "400": { "description": "Bad request." },
-            "404": { "description": "Post does not exist" }
+            "200": {
+              "description": "Post has been liked or unliked"
+            },
+            "400": {
+              "description": "Bad request."
+            },
+            "404": {
+              "description": "Post does not exist"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/users/": {
+      "get": {
+        "summary": "Get uers",
+        "description": "Gets the usernames of the users that are registered in the application",
+        "tags": ["Users"],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Following successfully fetched",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "examples": [null, "joblipat", "jacoblee", "johnjoseph"]
+                }
+              }
+            }
           }
         }
       }
@@ -250,6 +341,22 @@
         "summary": "Get following",
         "description": "Gets the usernames of the users that the logged in user is following",
         "tags": ["Followers"],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "username",
+            "description": "Username of the user to get the following of",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
         "responses": {
           "200": {
             "description": "Following successfully fetched",
@@ -257,8 +364,10 @@
               "application/json": {
                 "schema": {
                   "type": "array",
-                  "items": { "type": "string" },
-                  "examples": [["joblipat", "jacoblee", "johnjoseph"]]
+                  "items": {
+                    "type": "string"
+                  },
+                  "examples": [null, "joblipat", "jacoblee", "johnjoseph"]
                 }
               }
             }
@@ -271,8 +380,35 @@
         "summary": "Follow user",
         "description": "Follow a user",
         "tags": ["Followers"],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "username",
+            "description": "Username of the user who is going to follow",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "in": "path",
+            "name": "following",
+            "description": "Username of the user to follow",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
         "responses": {
-          "201": { "description": "User has successfully been followed" },
+          "201": {
+            "description": "User has successfully been followed"
+          },
           "400": {
             "description": "Bad request. User to follow does not exist"
           },
@@ -285,8 +421,30 @@
         "summary": "Unfollow user",
         "description": "Unfollow a user",
         "tags": ["Followers"],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "username",
+            "description": "Username of the user who is going to unfollow",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "in": "path",
+            "name": "following",
+            "description": "Username of the user to unfollow",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
         "responses": {
-          "200": { "description": "User has successfully been unfollowed" },
+          "200": {
+            "description": "User has successfully been unfollowed"
+          },
           "400": {
             "description": "Bad request. User to unfollow does not exist"
           },
