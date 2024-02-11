@@ -1,0 +1,567 @@
+/*FONT*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;1,300&display=swap");
+
+/*DESIGN GUIDE: FRAME 1 - PROFILE PAGE - FIGMA*/
+
+/*GENERAL*/
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+p,
+h1,
+h2,
+h3,
+h4 {
+  padding: 0px;
+  margin: 0px;
+}
+
+body {
+  display: flex;
+  height: 100vh;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 40px;
+
+  background-image: url(./assets/sonata.gif);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  backdrop-filter: blur(15px);
+}
+
+/********************************/
+
+/*NAVIGATION BAR SECTION*/
+
+#logo-icon {
+  width: 50px;
+  height: 50px;
+  margin-top: 5px;
+}
+
+.twatterlogo {
+  display: flex;
+  gap: 1rem;
+}
+
+.profile-main-page {
+  margin-left: 20%;
+  margin-right: 20%;
+  display: flex;
+  padding-left: 135px;
+  margin-top: 1rem;
+  flex: 0.5;
+  min-width: fit-content;
+  overflow-y: scroll;
+}
+
+.profile-main-page::-webkit-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.prof-nav {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  height: 90vh;
+  width: 30vh;
+  border-radius: 20px;
+  margin-top: 2rem;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  bottom: 0;
+  top: 0;
+  left: 10%;
+  padding-bottom: 10px;
+}
+
+#nav-title {
+  text-decoration: none;
+  color: inherit;
+  font-size: 25px;
+  color: black;
+  font-family: poppins;
+}
+
+.nav-btn {
+  transition: all 300ms ease;
+  border: none;
+  background-color: transparent;
+  display: flex;
+  padding: 1rem;
+  gap: 10px;
+}
+
+.nav-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2rem;
+  color: transparent;
+}
+
+.nav-icon {
+  height: 35px;
+  width: 35px;
+}
+
+.nav-btn .nav-icon {
+  margin-right: 15px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.nav-sect {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 3rem;
+  margin-top: 1rem;
+}
+
+.main-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 10rem;
+  justify-content: space-evenly;
+}
+
+#prof-nav-title {
+  color: black;
+  font-size: 3rem;
+  font-family: poppins;
+}
+
+#prof-btn-nav {
+  transition: all 300ms ease;
+  border: none;
+  background-color: transparent;
+  display: flex;
+  padding: 1rem;
+}
+
+#prof-btn-nav:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2rem;
+  color: transparent;
+}
+
+.profile-nav button {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  gap: 15px;
+  margin-right: 10px;
+}
+
+.nav-icon.profile-btn-nav {
+  border-radius: 45%;
+}
+
+#prof-btn-title {
+  color: black;
+}
+
+.prof-nav-sect {
+  flex-wrap: wrap;
+  align-self: center;
+}
+
+.home-nav-btn.profile-nav {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: fit-content;
+}
+
+.shux {
+  margin-top: 2.5px;
+  font-family: poppins;
+}
+
+.nav-icon.material-symbols-outlined {
+  font-size: 34px;
+  font-weight: 800;
+  margin-top: 2px;
+}
+
+/*PROFILE MAIN CONTENT*/
+
+.twatter-profile-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.twatter-profile-user {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  height: 55vh;
+  width: 100vh;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 2rem 20px 0px 10px;
+  align-items: center;
+}
+
+.profile-banner-img {
+  height: 150px;
+  width: 730px;
+  border-radius: 1rem;
+}
+
+.user-tab-1-img img {
+  width: 130px;
+  border-radius: 100px;
+  border-style: solid;
+  border-width: 5px;
+  /* border-color: rgb(48, 46, 70); */
+  border-color: rgba(255, 255, 255, 0.8);
+  margin-top: -70px;
+  align-items: flex-start;
+  align-items: center;
+}
+
+.user-tab-1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0px 20px;
+}
+
+.user-tab-1-cta {
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+}
+
+.cta-icon {
+  padding: 5px;
+  border-radius: 50%;
+  border-style: solid;
+  border-color: #454875;
+  border-width: 1.5px;
+  margin: 0px 10px 0px 0px;
+}
+
+.cta-1 img {
+  height: 20px;
+  width: 20px;
+}
+
+.user-tab-2 {
+  /* padding: 10px 20px 0px 20px; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user-tab-2 h2 {
+  color: aliceblue;
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.tab-2-handle p {
+  color: darkgray;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.user-tab-3 {
+  padding: 20px 20px 0px 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.user-tab-3 p {
+  color: aliceblue;
+  font-size: 20px;
+  font-weight: 50;
+}
+
+.user-tab-4 {
+  padding: 20px 20px 0px 20px;
+}
+
+.tab-4-item span {
+  color: darkgray;
+  font-size: 15px;
+  font-weight: 500;
+}
+.tab-4-item {
+  text-decoration: none;
+}
+
+.tab-4-item:hover {
+  text-decoration: underline;
+  color: aliceblue;
+}
+
+/* TWATTER PROFILE FEED */
+
+.twatter-profile-feed {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  height: 64vh;
+  width: 100vh;
+  border-radius: 20px;
+  /* max-height: fit-content; */
+
+  background: rgba(255, 255, 255, 0.2);
+  padding: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 10px 20px 0px 10px;
+}
+
+.profile-text {
+  font-family: poppins;
+  color: white;
+  margin-right: 0;
+}
+
+.profile-text.user-name-text {
+  color: white;
+  font-weight: 300;
+}
+
+.profile-text.profile-bio-text {
+  font-size: 15px;
+  color: white;
+}
+
+.twatter-profile-tweet {
+  display: flex;
+  flex-direction: row;
+  padding: 20px;
+  border-style: solid;
+  border-color: darkgrey;
+  border-width: 1px 0px 0px 0px;
+}
+
+.twatter-profile-tweet-last {
+  display: flex;
+  flex-direction: row;
+  padding: 20px;
+  border-style: solid;
+  border-color: darkgrey;
+  border-width: 1px 0px 1px 0px;
+}
+
+.user-avatar-img {
+  width: 40px;
+  border-radius: 100px;
+}
+
+.twatter-heart-container {
+  margin-left: 290px;
+  display: flex;
+}
+
+.heart-button-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 300ms ease;
+  background-color: transparent;
+  border: none;
+  height: 20px;
+  width: 40px;
+  align-items: center;
+}
+
+.tweet-content {
+  padding-left: 15px;
+}
+
+.tweet-content-container {
+  margin-top: 10px;
+  display: flex;
+}
+
+.tweet-content-details {
+  display: flex;
+  flex-direction: row;
+}
+
+.tweet-content-details h4 {
+  font-size: 23px;
+  font-weight: 600px;
+  color: aliceblue;
+  padding-right: 15px;
+}
+
+.tweet-content-details span p {
+  font-size: 12px;
+  font-weight: 500px;
+  color: aliceblue;
+}
+
+.tweet-content {
+  color: white;
+}
+
+.tweet-name {
+  font-family: poppins;
+}
+
+.tweet-name.tweet-profile-name {
+  font-size: 15px;
+}
+
+.tweet-name.tweet-profile-user-name {
+  font-size: 10px;
+  margin-top: 4px;
+}
+
+.tweet-text {
+  font-family: poppins;
+  font-size: 12px;
+}
+
+.profile-user-tab {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+/*HEART BUTTON TRANSITION*/
+
+.heart-button:hover .material-symbols-outlined {
+  color: red;
+}
+
+.heart-button.liked .material-symbols-outlined {
+  color: red;
+}
+
+.heart-button.liked .button-text {
+  color: red;
+}
+
+.heart-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  color: black;
+  gap: 10px;
+}
+
+.like-count-text {
+  font-size: 1rem;
+}
+
+/**************************/
+
+/*PUBLICATION DETAILS TWEET STYLING (USERNAME AND PUBLICATION DATE)*/
+
+.publication-details {
+  display: flex;
+  gap: 10px;
+}
+
+.publication-user-name {
+  font-family: poppins;
+  margin-top: 2px;
+  font-weight: 100;
+}
+
+.publication-pub-date {
+  margin-top: 2.5px;
+  font-family: poppins;
+}
+
+/*********************************************/
+
+/*REVISED NAV BAR CSS*/
+
+body {
+  display: flex;
+  height: 100vh;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 40px;
+
+  background-image: url(./assets/sonata.gif);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  backdrop-filter: blur(15px);
+}
+
+.sidebar {
+  flex: 0.2;
+  min-width: 230px;
+  margin-top: 20px;
+  margin-left: 120px;
+  padding-left: 20px;
+  padding-right: 20px;
+  height: 95vh;
+}
+
+.sidebar {
+  background-color: rgba(240, 240, 240, 0.2);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 6px rgb(1, 1, 1, 0.1);
+  border-radius: 20px;
+}
+
+.sidebarOpt {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.sidebarOpt,
+h2 {
+  font-weight: 800;
+  font-size: 20px;
+  margin-right: 20px;
+  font-family: poppins;
+}
+
+.side-header {
+  display: flex;
+}
+
+#owl {
+  margin-top: 1.5rem;
+  width: 70px;
+  height: 40px;
+}
+
+.logo {
+  font-family: poppins;
+  margin-bottom: 5rem;
+  margin-top: 1.5rem;
+  margin-left: 0.5rem;
+}
+
+.sidebarOpt {
+  border-radius: 30px;
+  color: black;
+}
+
+/**/
+.tab-2-handle.tab-2-profile-name {
+  align-items: flex-end;
+}

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="profile.css" />
+    <link rel="stylesheet" href="profilemq.css" />
+    <script src="profile.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+    <title>Oasis</title>
+  </head>
+  <body>
+    <div class="background"></div>
+    <!--MAIN PAGE CONTENT-->
+    <div class="profile-main-page">
+      <!--PROFILE PAGE NAVIGATION PANE-->
+      <div class="prof-nav">
+        <div class="nav-sect">
+          <div class="twatterlogo">
+            <img src="./assets/oasisowlcropped.png" alt="" id="logo-icon" />
+            <h1 id="prof-nav-title">Oasis</h1>
+          </div>
+          <div class="main-nav">
+            <!--HOME BUTTON-->
+            <div class="home-nav-btn">
+              <a href="">
+                <button class="nav-btn">
+                  <span class="nav-icon material-symbols-outlined"> home </span>
+                  <h3 id="nav-title">Home</h3>
+                </button>
+              </a>
+            </div>
+
+            <!--PROFILE BUTTON-->
+            <div class="home-nav-btn">
+              <a href=""
+                ><button class="nav-btn">
+                  <span class="nav-icon material-symbols-outlined">
+                    person
+                  </span>
+                  <h3 id="nav-title">Profile</h3>
+                </button></a
+              >
+            </div>
+
+            <!--FOLLOWING BUTTON-->
+            <div class="home-nav-btn">
+              <a href="">
+                <button class="nav-btn">
+                  <span class="nav-icon material-symbols-outlined">
+                    group
+                  </span>
+                  <h3 id="nav-title">Following</h3>
+                </button>
+              </a>
+            </div>
+
+            <!--SIGN OUT BUTTON-->
+            <div class="home-nav-btn">
+              <a href="">
+                <!--LAGAY HERE YUNG HTML FOR THE HOME PAGE HTML-->
+                <button class="nav-btn">
+                  <span class="nav-icon material-symbols-outlined">
+                    logout
+                  </span>
+                  <h3 id="nav-title">Sign Out</h3>
+                </button>
+              </a>
+            </div>
+          </div>
+
+          <!--PROFILE ICON/BUTTON-->
+          <div class="prof-nav-sect">
+            <div class="home-nav-btn profile-nav">
+              <button id="prof-btn-nav">
+                <img
+                  src="./assets/dk_biceps.jpg"
+                  alt="User Profile"
+                  class="nav-icon profile-btn-nav"
+                />
+                <div>
+                  <span><h4 id="prof-btn-title">User Profile Name</h4></span>
+                  <span><p id="prof-btn-title">@Username12345</p></span>
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--MAIN PROFILE CONTENT (USER INFORMATION AND PROFILE)-->
+      <div class="twatter-profile-section">
+        <!-- USER PROFILE ICON, BANNER, ETC, IS FINISHED -->
+        <div class="twatter-profile-user">
+          <img
+            src="./assets/twatter-user-banner.jpg"
+            class="profile-banner-img"
+          />
+          <div class="profile-user-tab">
+            <div class="user-tab-1">
+              <div class="user-tab-1-img">
+                <img src="./assets/dk_biceps.jpg" alt="User Profile Picture" />
+              </div>
+              <!-- <div class="user-tab-1-cta">
+                <button>
+                  <img src="./icon-images/pen.png" class="cta-icon" />
+                </button>
+              </div> -->
+            </div>
+            <div class="user-tab-2">
+              <div class="tab-2-handle tab-2-profile-name">
+                <span><h2 class="profile-text">dokyeom</h2></span>
+              </div>
+              <!-- <h2 class="profile-text">dokyeom</h2> -->
+              <div class="tab-2-handle">
+                <span
+                  ><p class="profile-text user-name-text">@itsdeekayy</p></span
+                >
+              </div>
+            </div>
+            <div class="user-tab-3">
+              <span>
+                <p class="profile-text profile-bio-text">
+                  1997 | Artist | PLEDIS Entertainment.
+                </p></span
+              >
+            </div>
+            <div class="user-tab-4">
+              <a class="tab-4-item" href="#">
+                <!-- <span class="profile-text">FOLLOWING</span> -->
+                <p class="profile-text">FOLLOWING</p>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="twatter-profile-feed">
+          <!-- PROFILE FEED IS STILL UNDER CONSTRUCTION-->
+          <div class="twatter-profile-tweet">
+            <!-- FIRST TWEET -->
+            <div class="tweet-avatar">
+              <img
+                src="./assets/dk_biceps.jpg"
+                class="user-avatar-img"
+                alt="User Avatar"
+              />
+            </div>
+            <div class="tweet-content">
+              <div class="tweet-content-details">
+                <span
+                  ><h4 class="tweet-name tweet-profile-name">dokyeom</h4></span
+                >
+                <span class="publication-details">
+                  <span><p class="shux">@itsdeekayy</p></span>
+                  <span><p class="publication-pub-date">Nov 27, 2023</p></span>
+                </span>
+                <div class="twatter-heart-container">
+                  <button class="heart-button" onclick="toggleLike(this)">
+                    <span class="material-symbols-outlined"> favorite </span>
+                    <span><p class="like-count-text">5 Likes</p></span>
+                  </button>
+                </div>
+              </div>
+              <div class="tweet-content-container">
+                <span><p class="tweet-text">backburner</p></span>
+              </div>
+            </div>
+          </div>
+          <div class="twatter-profile-tweet">
+            <!-- SECOND TWEET -->
+            <div class="tweet-avatar">
+              <img
+                src="./assets/dk_biceps.jpg"
+                class="user-avatar-img"
+                alt="User Avatar"
+              />
+            </div>
+            <div class="tweet-content">
+              <div class="tweet-content-details">
+                <span
+                  ><h4 class="tweet-name tweet-profile-name">dokyeom</h4></span
+                >
+                <span class="publication-details">
+                  <span><p class="shux">@itsdeekayy</p></span>
+                  <span><p class="publication-pub-date">Nov 27, 2023</p></span>
+                </span>
+                <div class="twatter-heart-container">
+                  <button class="heart-button" onclick="toggleLike(this)">
+                    <span class="material-symbols-outlined"> favorite </span>
+                    <span><p class="like-count-text">5 Likes</p></span>
+                    <!--FIX SPACING-->
+                  </button>
+                </div>
+              </div>
+              <div class="tweet-content-container">
+                <span><p class="tweet-text">backburner</p></span>
+              </div>
+            </div>
+          </div>
+          <div class="twatter-profile-tweet">
+            <!-- THIRD TWEET -->
+            <div class="tweet-avatar">
+              <img
+                src="./assets/dk_biceps.jpg"
+                class="user-avatar-img"
+                alt="User Avatar"
+              />
+            </div>
+            <div class="tweet-content">
+              <div class="tweet-content-details">
+                <span
+                  ><h4 class="tweet-name tweet-profile-name">dokyeom</h4></span
+                >
+                <span class="publication-details">
+                  <span><p class="shux">@itsdeekayy</p></span>
+                  <span><p class="publication-pub-date">Nov 27, 2023</p></span>
+                </span>
+                <div class="twatter-heart-container">
+                  <button class="heart-button" onclick="toggleLike(this)">
+                    <span class="material-symbols-outlined"> favorite </span>
+                    <span><p class="like-count-text">5 Likes</p></span>
+                  </button>
+                </div>
+              </div>
+              <div class="tweet-content-container">
+                <span><p class="tweet-text">backburner</p></span>
+              </div>
+            </div>
+          </div>
+          <div class="twatter-profile-tweet">
+            <!-- LAST TWEET -->
+            <div class="tweet-avatar">
+              <img
+                src="./assets/dk_biceps.jpg"
+                class="user-avatar-img"
+                alt="User Avatar"
+              />
+            </div>
+            <div class="tweet-content">
+              <div class="tweet-content-details">
+                <span
+                  ><h4 class="tweet-name tweet-profile-name">dokyeom</h4></span
+                >
+                <span class="publication-details">
+                  <span><p class="shux">@itsdeekayy</p></span>
+                  <span><p class="publication-pub-date">Nov 27, 2023</p></span>
+                </span>
+                <div class="twatter-heart-container">
+                  <button class="heart-button" onclick="toggleLike(this)">
+                    <span class="material-symbols-outlined"> favorite </span>
+                    <span><p class="like-count-text">5 Likes</p></span>
+                  </button>
+                </div>
+              </div>
+              <div class="tweet-content-container">
+                <span><p class="tweet-text">backburner</p></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

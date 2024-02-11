@@ -58,6 +58,7 @@ async function sendDatatoLS(username, password) {
         localStorage.setItem('token', token);
         window.location.href = "timeline.html";
     } else {
+        alert('Incorrect Username/Password.')
         const error = await res.json();
         console.error(error);
     }
@@ -71,19 +72,6 @@ document.addEventListener("DOMContentLoaded", function () {
         await logIn(); // Call the login function when the button is clicked
     });
 });
-
-function logSign(){
-    let x = document.getElementById('login-box');
-    let y = document.getElementById('signup-box');
-
-    if (this.id === 'signup-btn') {
-        x.style.transform = 'scale(0)';
-        y.style.transform = 'scale(1)';
-    } else {
-        x.style.transform = 'scale(1)';
-        y.style.transform = 'scale(0)';
-    }
-}
 
 function logSign(){
     let x = document.getElementById('login-box');
