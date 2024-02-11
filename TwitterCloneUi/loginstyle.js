@@ -56,6 +56,7 @@ async function sendDatatoLS(username, password) {
     if (res.ok) {
         const token = await res.text();
         localStorage.setItem('token', token);
+        window.location.href = "timeline.html";
     } else {
         const error = await res.json();
         console.error(error);

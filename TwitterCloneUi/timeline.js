@@ -5,15 +5,15 @@ function postTextAreaValueToAPI(event) {
     const textAreaValue = textareaElement.value;
   
     const apiUrl = "http://localhost:3000/api/v1/posts"; 
-    const tokenVariable = localStorage.getItem('token');
+    const token = localStorage.getItem('token');
   
     const options = {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        'Authorization' : `Bearer ${tokenVariable}`
+        'Authorization' : `Bearer ${token}`
       },
-      body: JSON.stringify({ text: textAreaValue }),
+      body: JSON.stringify({ "content": textAreaValue }),
     };
   
     fetch(apiUrl, options)
@@ -30,3 +30,4 @@ function postTextAreaValueToAPI(event) {
         console.error("Error posting to API:", error);
       });
 }
+
