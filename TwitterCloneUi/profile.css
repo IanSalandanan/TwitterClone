@@ -29,7 +29,7 @@ body {
   margin-right: auto;
   padding: 0 40px;
 
-  background-image: url(./assets/sonata2.gif);
+  background-image: url(./assets/sonata.gif);
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
@@ -501,7 +501,7 @@ body {
   margin-right: auto;
   padding: 0 40px;
 
-  background-image: url(./icon-images/sonata.gif);
+  background-image: url(./assets/sonata.gif);
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
