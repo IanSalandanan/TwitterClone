@@ -5,7 +5,7 @@ function postTextAreaValueToAPI(event) {
     const textAreaValue = textareaElement.value;
   
     const apiUrl = "http://localhost:3000/api/v1/posts"; 
-    const tokenVariable = localStorage.getItem;
+    const tokenVariable = localStorage.getItem('token');
   
     const options = {
       method: "POST",
