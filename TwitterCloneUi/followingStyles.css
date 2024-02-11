@@ -188,9 +188,6 @@ a {
     margin-top: 2rem
 }
 
-.follow__avatar img{
-    height: 40px;
-}
 
 .follow__structureContainer{
     display: flex;
@@ -229,22 +226,6 @@ a {
    
    
 }
-
-
-
-/* .follow__headerSpecial {
-    position: relative;
-    margin-top: -10px;
-    font-size: 12px;
-    color: rgb(156, 156, 156);
-    font-weight: 600;
-} 
-
-.follow__headerDesc {
-    margin-bottom: 10px;
-    font-size: 15px;
-}  */
-
 
 /*WIDGET*/
 
