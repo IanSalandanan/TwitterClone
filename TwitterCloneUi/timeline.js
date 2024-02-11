@@ -31,3 +31,16 @@ function postTextAreaValueToAPI(event) {
       });
 }
 
+const token = localStorage.getItem('token');
+fetch('http://localhost:3000/api/v1/posts',{
+  method :'GET',
+  headers: {
+    "Authorization": `Bearer ${token}`,
+    "Accept":"application/json"
+  }
+}).then(function (response){
+  return response.json();
+}).then(function (obj) {
+  console.log(obj);
+});
+
