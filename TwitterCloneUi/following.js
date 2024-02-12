@@ -89,11 +89,10 @@ async function unFollow(classID,structNum){
     }
 }
 
-
 async function followUser() {
     const token = localStorage.getItem('token');
-    const buttonRes = document.getElementsByClassName(""); 
-    const userToFollow = buttonRes.value;
+    const rawData = document.getElementById("username");
+    const userToFollow = rawData.value; 
 
     const res = await fetch(`http://localhost:3000/api/v1/users/${logged_username}/following/${userToFollow}`, {
         method: 'POST',
@@ -101,7 +100,7 @@ async function followUser() {
             'Content-Type': 'application/json',
             "Authorization": `Bearer ${token}`
         },
-        body: JSON.stringify({username})
+        body: JSON.stringify({userToFollow})
     });
 
     try {
