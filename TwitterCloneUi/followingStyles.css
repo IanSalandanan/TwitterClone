@@ -214,7 +214,7 @@ a {
     margin-top: 8px;
 }
 
-.follow-btn {
+.follow__structureContainer button {
     font-size: 14px;
     font-weight: 900;
     background-color: rgba(112, 112, 112, 0);
@@ -222,9 +222,6 @@ a {
     height: 40px;
     border-radius: 20px;
     margin-top: 10px;
-
-   
-   
 }
 
 /*WIDGET*/
@@ -259,6 +256,15 @@ a {
     backdrop-filter: blur(10px);
     box-shadow: 0 4px 6px rgb(1, 1, 1, 0.1);
     border-radius: 20px;
+}
+
+.suggest-usernames{
+    margin-left: 20px;
+    margin-bottom: 7px;
+    display: flex;
+    align-items: center;
+    cursor:pointer;
+ 
 }
 
 .widget-header {

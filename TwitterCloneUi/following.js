@@ -30,11 +30,12 @@ document.addEventListener("DOMContentLoaded", function() {
     displayUsername();
 });
 
-//get all users
+
+//dynamically display all users
 document.addEventListener("DOMContentLoaded", function() {
 
     const token = localStorage.getItem('token');
-
+  
     fetch('http://localhost:3000/api/v1/users/', {
         method: 'GET',
         headers: {
@@ -49,27 +50,45 @@ document.addEventListener("DOMContentLoaded", function() {
         return response.json();
     })
     .then((data) => {
-        // Select the username elements in the DOM
-        const usernameElements = document.querySelectorAll('#suggest-usernames')
-
-        // Iterate through the list of users and update the username in each element
-        data.forEach((user, index) => {
-            if (usernameElements[index]) {
-                usernameElements[index].innerHTML = data[index];
-
-                // Add event listener to each username element
-                usernameElements[index].addEventListener('click', () => {
-                    // Navigate to profile page with username as query parameter
-                    window.location.href = `profile.html?username=${encodeURIComponent(data[index])}`;
-                });
-            }
+        // Select the parent element where you want to append the username containers
+        const userListContainer = document.querySelector('.suggest-users-container');
+  
+        // Iterate through the list of usernames and create a div container for each user
+        data.forEach((username) => {
+            // Create a new div element for the username container
+            const usernameContainer = document.createElement('div');
+            usernameContainer.classList.add('suggest-usernames');
+  
+            // Set the inner HTML of the username container to the username
+            usernameContainer.innerHTML = username;
+  
+            // Append the username container to the user list container
+            userListContainer.appendChild(usernameContainer);
+            
+            // Add event listener to each username element
+            usernameContainer.addEventListener('click', () => {
+                // Navigate to profile page with username as query parameter
+                window.location.href = `profile.html?username=${encodeURIComponent(username)}`;
+            });
         });
-        console.log(data);
+        console.log(data)
+
     })
     .catch((error) => {
         console.error("Error fetching from API:", error);
     });
 });
+
+  
+async function unFollow(classID,structNum){
+    z = document.querySelector('.'+classID).textContent;
+    if (z == 'Follow') {
+        document.querySelector('.'+classID).textContent = 'Following';
+    } else {
+        document.querySelector('.'+classID).textContent = 'Follow';
+    }
+}
+
 
 async function followUser() {
     const token = localStorage.getItem('token');
