@@ -14,6 +14,7 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
     />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?/family=Material+Symbols+Outlined">
     <title>Oasis</title>
   </head>
   <body>
@@ -23,8 +24,8 @@
       <!--PROFILE PAGE NAVIGATION PANE-->
       <div class="prof-nav">
         <div class="nav-sect">
-          <div class="twatterlogo">
-            <img src="./assets/oasisowlcropped.png" alt="" id="logo-icon" />
+          <div class="twatter-logo">
+            <img src="./assets/oasisowl.png" alt="" id="logo-icon" />
             <h1 id="prof-nav-title">Oasis</h1>
           </div>
           <div class="main-nav">
@@ -33,7 +34,7 @@
               <a href="">
                 <button class="nav-btn">
                   <span class="nav-icon material-symbols-outlined"> home </span>
-                  <h3 id="nav-title">Home</h3>
+                  <h2 id="nav-title">Home</h2>
                 </button>
               </a>
             </div>
@@ -45,7 +46,7 @@
                   <span class="nav-icon material-symbols-outlined">
                     person
                   </span>
-                  <h3 id="nav-title">Profile</h3>
+                  <h2 id="nav-title">Profile</h2>
                 </button></a
               >
             </div>
@@ -57,7 +58,7 @@
                   <span class="nav-icon material-symbols-outlined">
                     group
                   </span>
-                  <h3 id="nav-title">Following</h3>
+                  <h2 id="nav-title">Following</h2>
                 </button>
               </a>
             </div>
@@ -70,7 +71,7 @@
                   <span class="nav-icon material-symbols-outlined">
                     logout
                   </span>
-                  <h3 id="nav-title">Sign Out</h3>
+                  <h2 id="nav-title">Log Out</h2>
                 </button>
               </a>
             </div>
@@ -79,15 +80,13 @@
           <!--PROFILE ICON/BUTTON-->
           <div class="prof-nav-sect">
             <div class="home-nav-btn profile-nav">
-              <button id="prof-btn-nav">
-                <img
-                  src="./assets/dk_biceps.jpg"
-                  alt="User Profile"
-                  class="nav-icon profile-btn-nav"
-                />
+              <button class="nav-btn">
+                <div class="follow__avatar">
+                  <span class="prof-btn-avatar material-symbols-outlined">account_circle</span>
+                </div>
                 <div>
-                  <span><h4 id="prof-btn-title">User Profile Name</h4></span>
-                  <span><p id="prof-btn-title">@Username12345</p></span>
+                  <!-- <span><h4 id="prof-btn-title">Profile Name</h4></span> -->
+                  <span><p id="prof-btn-title">@Username</p></span>
                 </div>
               </button>
             </div>
@@ -99,35 +98,30 @@
         <!-- USER PROFILE ICON, BANNER, ETC, IS FINISHED -->
         <div class="twatter-profile-user">
           <img
-            src="./assets/twatter-user-banner.jpg"
+            src="./assets/profile-header.jpg"
             class="profile-banner-img"
           />
           <div class="profile-user-tab">
             <div class="user-tab-1">
-              <div class="user-tab-1-img">
-                <img src="./assets/dk_biceps.jpg" alt="User Profile Picture" />
+              <div class="follow__avatar">
+                <span class="material-symbols-outlined prof-avatar-icon">account_circle</span>
               </div>
-              <!-- <div class="user-tab-1-cta">
-                <button>
-                  <img src="./icon-images/pen.png" class="cta-icon" />
-                </button>
-              </div> -->
             </div>
             <div class="user-tab-2">
               <div class="tab-2-handle tab-2-profile-name">
-                <span><h2 class="profile-text">dokyeom</h2></span>
+                <span><h2 class="profile-text">Profile Name</h2></span>
               </div>
               <!-- <h2 class="profile-text">dokyeom</h2> -->
               <div class="tab-2-handle">
                 <span
-                  ><p class="profile-text user-name-text">@itsdeekayy</p></span
+                  ><p class="profile-text user-name-text">@username</p></span
                 >
               </div>
             </div>
             <div class="user-tab-3">
               <span>
                 <p class="profile-text profile-bio-text">
-                  1997 | Artist | PLEDIS Entertainment.
+                  
                 </p></span
               >
             </div>
@@ -143,20 +137,16 @@
           <!-- PROFILE FEED IS STILL UNDER CONSTRUCTION-->
           <div class="twatter-profile-tweet">
             <!-- FIRST TWEET -->
-            <div class="tweet-avatar">
-              <img
-                src="./assets/dk_biceps.jpg"
-                class="user-avatar-img"
-                alt="User Avatar"
-              />
+            <div class="follow__avatar">
+              <span class="tweet-prof-avatar material-symbols-outlined">account_circle</span>
             </div>
             <div class="tweet-content">
               <div class="tweet-content-details">
                 <span
-                  ><h4 class="tweet-name tweet-profile-name">dokyeom</h4></span
+                  ><h4 class="tweet-name tweet-profile-name">Profile Name</h4></span
                 >
                 <span class="publication-details">
-                  <span><p class="shux">@itsdeekayy</p></span>
+                  <span><p class="shux">@username</p></span>
                   <span><p class="publication-pub-date">Nov 27, 2023</p></span>
                 </span>
                 <div class="twatter-heart-container">
@@ -173,20 +163,16 @@
           </div>
           <div class="twatter-profile-tweet">
             <!-- SECOND TWEET -->
-            <div class="tweet-avatar">
-              <img
-                src="./assets/dk_biceps.jpg"
-                class="user-avatar-img"
-                alt="User Avatar"
-              />
+            <div class="follow__avatar">
+              <span class="tweet-prof-avatar material-symbols-outlined">account_circle</span>
             </div>
             <div class="tweet-content">
               <div class="tweet-content-details">
                 <span
-                  ><h4 class="tweet-name tweet-profile-name">dokyeom</h4></span
+                  ><h4 class="tweet-name tweet-profile-name">Profile Name</h4></span
                 >
                 <span class="publication-details">
-                  <span><p class="shux">@itsdeekayy</p></span>
+                  <span><p class="shux">@username</p></span>
                   <span><p class="publication-pub-date">Nov 27, 2023</p></span>
                 </span>
                 <div class="twatter-heart-container">
@@ -204,20 +190,16 @@
           </div>
           <div class="twatter-profile-tweet">
             <!-- THIRD TWEET -->
-            <div class="tweet-avatar">
-              <img
-                src="./assets/dk_biceps.jpg"
-                class="user-avatar-img"
-                alt="User Avatar"
-              />
+            <div class="follow__avatar">
+              <span class="tweet-prof-avatar material-symbols-outlined">account_circle</span>
             </div>
             <div class="tweet-content">
               <div class="tweet-content-details">
                 <span
-                  ><h4 class="tweet-name tweet-profile-name">dokyeom</h4></span
+                  ><h4 class="tweet-name tweet-profile-name">Profile Name</h4></span
                 >
                 <span class="publication-details">
-                  <span><p class="shux">@itsdeekayy</p></span>
+                  <span><p class="shux">@username</p></span>
                   <span><p class="publication-pub-date">Nov 27, 2023</p></span>
                 </span>
                 <div class="twatter-heart-container">
@@ -234,20 +216,16 @@
           </div>
           <div class="twatter-profile-tweet">
             <!-- LAST TWEET -->
-            <div class="tweet-avatar">
-              <img
-                src="./assets/dk_biceps.jpg"
-                class="user-avatar-img"
-                alt="User Avatar"
-              />
+            <div class="follow__avatar">
+              <span class="tweet-prof-avatar material-symbols-outlined">account_circle</span>
             </div>
             <div class="tweet-content">
               <div class="tweet-content-details">
                 <span
-                  ><h4 class="tweet-name tweet-profile-name">dokyeom</h4></span
+                  ><h4 class="tweet-name tweet-profile-name">Profile Name</h4></span
                 >
                 <span class="publication-details">
-                  <span><p class="shux">@itsdeekayy</p></span>
+                  <span><p class="shux">@username</p></span>
                   <span><p class="publication-pub-date">Nov 27, 2023</p></span>
                 </span>
                 <div class="twatter-heart-container">

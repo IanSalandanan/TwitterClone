@@ -8,11 +8,11 @@
   margin: 0;
   padding: 0;
 }
-
+/* tinangal muna ito para sa sidebar
 html {
   scroll-behavior: smooth;
 }
-
+*/
 p,
 h1,
 h2,
@@ -41,23 +41,16 @@ body {
 /*NAVIGATION BAR SECTION*/
 
 #logo-icon {
-  width: 50px;
-  height: 50px;
-  margin-top: 5px;
-}
-
-.twatterlogo {
-  display: flex;
-  gap: 1rem;
+  margin-top: 1.5rem;
+  width: 70px;
+  height: 40px;
+  padding: 0;
 }
 
 .profile-main-page {
-  margin-left: 20%;
-  margin-right: 20%;
   display: flex;
-  padding-left: 135px;
   margin-top: 1rem;
-  flex: 0.5;
+  flex: 0.2;
   min-width: fit-content;
   overflow-y: scroll;
 }
@@ -68,45 +61,52 @@ body {
 }
 
 .prof-nav {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  height: 90vh;
-  width: 30vh;
-  border-radius: 20px;
-  margin-top: 2rem;
-  background: rgba(255, 255, 255, 0.2);
-  padding: 20px;
+  flex: 0.2;
+  height: 95vh;
+  min-width: 210px;
+  margin-top: 4px;
+  margin-left: 120px;
+  padding-left: 20px; /*te
+pla panah */
+  padding-right: 20x; 
+
+  background-color: rgba(240, 240, 240, 0.2);
   backdrop-filter: blur(10px);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  position: fixed;
-  bottom: 0;
-  top: 0;
-  left: 10%;
-  padding-bottom: 10px;
+  box-shadow: 0 4px 6px rgb(1, 1, 1, 0.1);
+  border-radius: 20px;
 }
 
 #nav-title {
   text-decoration: none;
   color: inherit;
-  font-size: 25px;
   color: black;
   font-family: poppins;
+  margin-top: 3px;
 }
+
 
 .nav-btn {
   transition: all 300ms ease;
   border: none;
+  border-radius: 30px;
   background-color: transparent;
   display: flex;
   padding: 1rem;
-  gap: 10px;
+  gap: 3px;
 }
 
 .nav-btn:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 2rem;
-  color: transparent;
+  background: rgba(18, 18, 18, 0.7);
+  color:transparent;
+  color: white;
+}
+
+.nav-btn:hover #nav-title {
+  color: white;
+}
+
+.nav-btn:hover #prof-btn-title {
+  color: white;
 }
 
 .nav-icon {
@@ -115,7 +115,7 @@ body {
 }
 
 .nav-btn .nav-icon {
-  margin-right: 15px;
+  margin-right: 15px;  margin-bottom: 1px;
 }
 
 a {
@@ -125,46 +125,41 @@ a {
 .nav-sect {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  flex-wrap: wrap;
   gap: 3rem;
-  margin-top: 1rem;
 }
 
 .main-nav {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  margin-bottom: 10rem;
   justify-content: space-evenly;
 }
 
-#prof-nav-title {
-  color: black;
-  font-size: 3rem;
-  font-family: poppins;
-}
-
-#prof-btn-nav {
-  transition: all 300ms ease;
-  border: none;
-  background-color: transparent;
+.twatter-logo {
   display: flex;
-  padding: 1rem;
+  flex-direction: row;
+  margin-bottom: 3px;
 }
 
-#prof-btn-nav:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 2rem;
-  color: transparent;
+#prof-nav-title {
+  font-family: poppins;
+  margin-bottom: 2rem;
+  margin-top: 1.5rem;
+  margin-left: .5rem;
 }
 
-.profile-nav button {
+.home-nav-btn.profile-nav button {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   gap: 15px;
   margin-right: 10px;
+}
+
+.nav-sect h2 {
+  font-weight: 800;
+  font-size: 20px;
+  margin-right: 20px;
+  font-family: poppins;
 }
 
 .nav-icon.profile-btn-nav {
@@ -173,6 +168,9 @@ a {
 
 #prof-btn-title {
   color: black;
+  font-weight: bold;
+  font-size: 15;
+  margin-top: 5px;
 }
 
 .prof-nav-sect {
@@ -186,22 +184,33 @@ a {
   max-width: fit-content;
 }
 
+.home-nav-btn {
+  display: flex;
+  align-items: center;
+}
+
 .shux {
   margin-top: 2.5px;
   font-family: poppins;
 }
 
 .nav-icon.material-symbols-outlined {
-  font-size: 34px;
-  font-weight: 800;
+  font-size: 30px;
+  font-weight: lighter; /*INIBA KO NA YUNG WEIGHT NUNG ICONS MATCHA KAYLA KERBY*/
   margin-top: 2px;
 }
 
+
+.prof-btn-avatar .material-symbols-outlined{
+  font-size: 30px;
+  
+}
 /*PROFILE MAIN CONTENT*/
 
 .twatter-profile-section {
   display: flex;
   flex-direction: column;
+  margin-top: 4px;
 }
 
 .twatter-profile-user {
@@ -210,18 +219,20 @@ a {
   justify-content: left;
   height: 55vh;
   width: 100vh;
+  margin-left: 33px;
+  padding-left: 20px;
+  padding-right: 20px;
   border-radius: 20px;
   background: rgba(255, 255, 255, 0.2);
-  padding: 20px;
   backdrop-filter: blur(10px);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  margin: 2rem 20px 0px 10px;
   align-items: center;
 }
 
 .profile-banner-img {
+  margin-top: 10px;
   height: 150px;
-  width: 730px;
+  width: 680px;
   border-radius: 1rem;
 }
 
@@ -235,6 +246,10 @@ a {
   margin-top: -70px;
   align-items: flex-start;
   align-items: center;
+}
+
+.prof-avatar.material-symbols-outlined{
+  font-size: 20px;
 }
 
 .user-tab-1 {
@@ -319,6 +334,8 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: left;
+  margin-top: 20px;
+  margin-left: 33px;
   height: 64vh;
   width: 100vh;
   border-radius: 20px;
@@ -328,9 +345,12 @@ a {
   padding: 20px;
   backdrop-filter: blur(10px);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  margin: 10px 20px 0px 10px;
 }
 
+.tweet-prof-avatar.material-symbols-outlined{
+  font-size: 40px;
+  font-weight: lighter;
+}
 .profile-text {
   font-family: poppins;
   color: white;
@@ -492,16 +512,16 @@ a {
 
 /*********************************************/
 
-/*REVISED NAV BAR CSS*/
+/*REVISED NAV BAR CSS copied from kerby*/
 
-body {
+/* body {
   display: flex;
   height: 100vh;
   margin-left: auto;
   margin-right: auto;
   padding: 0 40px;
 
-  background-image: url(./assets/sonata.gif);
+  background-image: url(./assets/sonata2.gif);
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
@@ -559,7 +579,7 @@ h2 {
 .sidebarOpt {
   border-radius: 30px;
   color: black;
-}
+} */
 
 /**/
 .tab-2-handle.tab-2-profile-name {
