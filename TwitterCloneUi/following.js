@@ -30,6 +30,7 @@ document.addEventListener("DOMContentLoaded", function() {
     displayUsername();
 });
 
+//get all users
 document.addEventListener("DOMContentLoaded", function() {
     const token = localStorage.getItem('token');
 
@@ -48,12 +49,18 @@ document.addEventListener("DOMContentLoaded", function() {
     })
     .then((data) => {
         // Select the username elements in the DOM
-        const usernameElements = document.querySelectorAll('.follow__headerText h3');
+        const usernameElements = document.querySelectorAll('#suggest-usernames')
 
         // Iterate through the list of users and update the username in each element
         data.forEach((user, index) => {
             if (usernameElements[index]) {
                 usernameElements[index].innerHTML = data[index];
+
+                // Add event listener to each username element
+                usernameElements[index].addEventListener('click', () => {
+                    // Navigate to profile page with username as query parameter
+                    window.location.href = `profile.html?username=${encodeURIComponent(data[index])}`;
+                });
             }
         });
         console.log(data);
