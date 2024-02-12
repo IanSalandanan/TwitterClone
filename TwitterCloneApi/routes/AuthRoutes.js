@@ -7,7 +7,6 @@ import {
   validateRequiredField,
   withErrorHandling,
 } from "./RouteUtils.js";
-import DataAccessError from "../repositories/DataAccessError.js";
 
 const router = express.Router();
 
