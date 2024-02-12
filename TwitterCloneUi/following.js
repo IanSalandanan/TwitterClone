@@ -79,3 +79,12 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
   
+async function unFollow(classID,structNum){
+    z = document.querySelector('.'+classID).textContent;
+    if (z == 'Follow') {
+        document.querySelector('.'+classID).textContent = 'Following';
+    } else {
+        document.querySelector('.'+classID).textContent = 'Follow';
+    }
+}
+
