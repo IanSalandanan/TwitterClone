@@ -200,6 +200,7 @@ a {
   font-size: 30px;
   font-weight: lighter; /*INIBA KO NA YUNG WEIGHT NUNG ICONS MATCHA KAYLA KERBY*/
   margin-top: 2px;
+  color: black;
 }
 
 .prof-btn-avatar .material-symbols-outlined {
@@ -468,7 +469,7 @@ a {
 /*HEART BUTTON TRANSITION*/
 
 .heart-button:hover .material-symbols-outlined {
-  color: red;
+  color: white;
 }
 
 .heart-button.liked .material-symbols-outlined {
