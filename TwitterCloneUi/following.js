@@ -8,9 +8,9 @@ function getUsernameFromLocalStorage() {
     return null;
 }
 
-function displayUsername(){
+var logged_username = getUsernameFromLocalStorage();
 
-    const logged_username = getUsernameFromLocalStorage();
+function displayUsername(){
 
     //validation
     if (logged_username) {
@@ -33,6 +33,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 //dynamically display all users
 document.addEventListener("DOMContentLoaded", function() {
+
     const token = localStorage.getItem('token');
   
     fetch('http://localhost:3000/api/v1/users/', {
@@ -88,3 +89,28 @@ async function unFollow(classID,structNum){
     }
 }
 
+async function followUser() {
+    const token = localStorage.getItem('token');
+    const rawData = document.getElementById("username");
+    const userToFollow = rawData.value; 
+
+    const res = await fetch(`http://localhost:3000/api/v1/users/${logged_username}/following/${userToFollow}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            "Authorization": `Bearer ${token}`
+        },
+        body: JSON.stringify({userToFollow})
+    });
+
+    try {
+        if (!res.ok) {
+            throw new Error(`API request failed with status ${res.status}`);
+        }
+        else {
+            console.log(`Followed: ${userToFollow}`);
+        }
+    } catch (error) {
+        console.error(error);
+    }
+}
