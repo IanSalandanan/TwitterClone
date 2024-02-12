@@ -114,3 +114,28 @@ async function followUser() {
         console.error(error);
     }
 }
+
+async function unfollowUser() {
+    const token = localStorage.getItem('token');
+    const rawData = document.getElementById("username");
+    const userToUnfollow = rawData.value; 
+
+    const res = await fetch(`http://localhost:3000/api/v1/users/${logged_username}/following/${userToUnfollow}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            "Authorization": `Bearer ${token}`
+        }
+    });
+
+    try {
+        if (!res.ok) {
+            throw new Error(`API request failed with status ${res.status}`);
+        }
+        else {
+            console.log(`Unfollowed: ${userToUnfollow}`);
+        }
+    } catch (error) {
+        console.error(error);
+    }
+}
