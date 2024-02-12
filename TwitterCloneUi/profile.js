@@ -23,3 +23,12 @@ document.addEventListener("DOMContentLoaded", function() {
     // Set the inner HTML of the element with the username
     usernameElement.innerHTML = `<span>${username}</span>`;
 });
+
+async function unFollow(classID,structNum){
+  z = document.querySelector('.'+classID).textContent;
+  if (z == 'Follow') {
+      document.querySelector('.'+classID).textContent = 'Following';
+  } else {
+      document.querySelector('.'+classID).textContent = 'Follow';
+  }
+}
