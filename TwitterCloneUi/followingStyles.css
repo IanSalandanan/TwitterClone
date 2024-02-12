@@ -261,6 +261,15 @@ a {
     border-radius: 20px;
 }
 
+.suggest-usernames{
+    margin-left: 20px;
+    margin-bottom: 7px;
+    display: flex;
+    align-items: center;
+    cursor:pointer;
+ 
+}
+
 .widget-header {
     display: flex;
     justify-content: center;
