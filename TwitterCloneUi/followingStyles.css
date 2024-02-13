@@ -183,9 +183,9 @@ a {
     backdrop-filter: blur(10px);
     box-shadow: 0 4px 6px rgb(1, 1, 1, 0.1);
     border-radius: 20px;
-    padding: 10px;
+    padding: 15px;
     height: auto;
-    margin-top: 2rem
+    margin-top: 2rem;
 }
 
 
@@ -194,6 +194,7 @@ a {
     align-items: flex-start; 
     margin-top:15px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.15) ;
+ 
 }
 
 .follow__body {
@@ -201,12 +202,20 @@ a {
     flex: 1;
     padding: 10px;
     max-width: 500px;
+    /* background-color: blueviolet; */
+
+ 
 }
 
 .follow__avatar{
     padding: 20px;
 }
 
+.follow__userHeaderText{
+    font-size: 13px;
+    margin-top: 8px;
+    cursor: pointer;
+}
 
 .follow__headerText {
     font-size: 14px;

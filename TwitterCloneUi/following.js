@@ -24,6 +24,12 @@ function displayUsername(){
     if (usernameElement !== null){
         usernameElement.innerHTML = `<h3>${logged_username}</h3>`; 
     }
+
+    //display username of logged user in navbar
+    const usernameElement2 = document.getElementById('nav-user');
+    if (usernameElement2 !== null){
+        usernameElement2.innerHTML = `<h3>${logged_username}</h3>`; 
+    }
 }
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -81,34 +87,69 @@ document.addEventListener("DOMContentLoaded", function() {
 
 async function getFollowing() {
     const token = localStorage.getItem('token');
-    const loggedUsername = getUsernameFromLocalStorage(); // Assuming you have a function to get the logged-in username
-  
-    try {
-      const response = await fetch(`http://localhost:3000/api/v1/users/${loggedUsername}/following`, {
-        method: 'GET',
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
-      });
-  
-      if (!response.ok) {
-        throw new Error(`Failed to fetch following: ${response.status}`);
-      }
-  
-      const data = await response.json();
-      console.log('Following:', data); // Assuming data is an array of usernames
-      // Handle the retrieved list of following users as needed
-    } catch (error) {
-      console.error('Error fetching following:', error);
-    }
-  }
-  
-  // Call the function to fetch the list of following users
-  getFollowing();
-  
+    //const loggedUsername = getUsernameFromLocalStorage();
 
-//unfollow follow mechanisms
+    try {
+        const response = await fetch(`http://localhost:3000/api/v1/users/${logged_username}/following`, {
+            method: 'GET',
+            headers: {
+                'Accept': "application/json",
+                'Authorization': `Bearer ${token}`
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error(`Failed to fetch following: ${response.status}`);
+        }
+
+        const data = await response.json();
+        console.log('Following:', data); // Assuming data is an array of usernames
+
+        // Select the parent element where you want to append the username containers
+        const followed_userListContainer = document.querySelector('.follow__structure');
+
+        // Iterate through the list of usernames and create a div container for each user
+        data.forEach((username) => {
+            // Create a new div element for the username container
+            const followed_structureContainer = document.createElement('div');
+            followed_structureContainer.classList.add('follow__structureContainer');
+
+            // Set the inner HTML of the username container to include the username and follow button
+            followed_structureContainer.innerHTML = `
+                <div class="follow__avatar" alt="avatar">
+                    <span class="material-symbols-outlined">account_circle</span>
+                </div>
+                <div class="follow__body">
+                    <div class="follow__userHeader">
+                        <div class="follow__userHeaderText">
+                            <h3>${username}</h3>
+                        </div>
+                    </div>
+                </div>
+                <button class="follow-btn-1" type="button" onclick="unFollow('follow-btn-1', '1'); unfollowUser();">Following</button>
+            `;
+
+            // Append the username container to the user list container
+            followed_userListContainer.appendChild(followed_structureContainer);
+
+            // Add event listener to each username element
+            followed_structureContainer.querySelector('h3').addEventListener('click', () => {
+                // Navigate to profile page with username as query parameter
+                window.location.href = `profile.html?username=${encodeURIComponent(username)}`;
+            });
+        });
+
+    } catch (error) {
+        console.error('Error fetching following:', error);
+    }
+}
+
+// Call the function to fetch the list of following users
+getFollowing();
+
+
   
+//unfollow follow mechanisms
 async function unFollow(classID,structNum){
     z = document.querySelector('.'+classID).textContent;
     if (z == 'Follow') {
