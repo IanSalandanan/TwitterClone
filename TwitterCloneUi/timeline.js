@@ -1,3 +1,35 @@
+function getUsernameFromLocalStorage() {
+  const token = localStorage.getItem('token');
+  if (token) {
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      return payload.username;
+  }
+  return null;
+}
+
+var logged_username = getUsernameFromLocalStorage();
+
+function displayUsername(){
+
+  //validation
+  if (logged_username) {
+      console.log("Username retrieved from localStorage:", logged_username);
+  } else {
+      console.log("No username found in localStorage.");
+  }
+
+  //display username of logged user
+  const usernameElement = document.getElementById('nav-user');
+  if (usernameElement !== null){
+      usernameElement.innerHTML = `<h3>${logged_username}</h3>`; 
+  }
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+  displayUsername();
+});
+
+
 function postTextAreaValueToAPI(event) {
     event.preventDefault();
     
@@ -71,7 +103,7 @@ fetch('http://localhost:3000/api/v1/posts',{
     // Create the post header text div and add it to the post header
     const postHeaderText = document.createElement('div');
     postHeaderText.classList.add('post-header-text');
-    postHeaderText.innerHTML = `<h3>${post.username}</h3>`; // Assuming 'username' is a property of the post object
+    postHeaderText.innerHTML = `<h3>${logged_username}</h3>`; // Assuming 'username' is a property of the post object
     postHeader.appendChild(postHeaderText);
 
     // Create the post header description div and add it to the post header
