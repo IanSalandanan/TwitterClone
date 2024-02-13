@@ -149,6 +149,7 @@ window.onload = function () {
 // }
 
 // Function to parse URL query parameters
+/*
 function getQueryParam(name) {
   const urlParams = new URLSearchParams(window.location.search);
   return urlParams.get(name);
@@ -171,6 +172,66 @@ async function unFollow(classID, structNum) {
     document.querySelector("." + classID).textContent = "Following";
   } else {
     document.querySelector("." + classID).textContent = "Follow";
+  }
+}
+*/
+async function unFollow(classID,structNum){
+  z = document.querySelector('.'+classID).textContent;
+  if (z == 'Follow') {
+      document.querySelector('.'+classID).textContent = 'Following';
+  } else {
+      document.querySelector('.'+classID).textContent = 'Follow';
+  }
+}
+
+async function followUser() {
+  const token = localStorage.getItem('token');
+  const rawData = document.getElementById("username");
+  const userToFollow = rawData.value; 
+
+  const res = await fetch(`http://localhost:3000/api/v1/users/${logged_username}/following/${userToFollow}`, {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json',
+          "Authorization": `Bearer ${token}`
+      },
+      body: JSON.stringify({userToFollow})
+  });
+
+  try {
+      if (!res.ok) {
+          throw new Error(`API request failed with status ${res.status}`);
+      }
+      else {
+          console.log(`Followed: ${userToFollow}`);
+      }
+  } catch (error) {
+      console.error(error);
+  }
+}
+
+async function unfollowUser() {
+  const token = localStorage.getItem('token');
+  const rawData = document.getElementById("username");
+  const userToUnfollow = rawData.value; 
+
+  const res = await fetch(`http://localhost:3000/api/v1/users/${logged_username}/following/${userToUnfollow}`, {
+      method: 'DELETE',
+      headers: {
+          'Content-Type': 'application/json',
+          "Authorization": `Bearer ${token}`
+      }
+  });
+
+  try {
+      if (!res.ok) {
+          throw new Error(`API request failed with status ${res.status}`);
+      }
+      else {
+          console.log(`Unfollowed: ${userToUnfollow}`);
+      }
+  } catch (error) {
+      console.error(error);
   }
 }
 
