@@ -3,20 +3,11 @@ function toggleLike(button) {
   button.classList.toggle("liked");
 }
 
-/**API FOR LIKE BUTTON**/
-
-// const API_ENDPOINTS = {
-//   USER_TWEETS: "http://localhost:3000/api/docs/#/Posts/get_api_v1_posts",
-//   LIKE_TWEETS: "http://localhost:3000/api/docs/#/Posts/patch_api_v1_posts__id",
-//   USERNAME: "http://localhost:3000/api/docs/#/Users/get_api_v1_users_",
-// };
-
-// FUNCTION TO RETRIVE/GET USER'S TWEETS/POSTS
-
 async function getTweets() {
-  let token = localStorage.getItem("token");
+  const token = localStorage.getItem("token");
 
   const response = await fetch("http://localhost:3000/api/v1/posts", {
+    method: "GET",
     headers: {
       "Content Type": "application/json",
       Authorization: `Bearer ${token}`,
@@ -49,15 +40,13 @@ async function getTweets() {
 
 // USER BUTTON IN NAV BAR - FUNCTION TO FETCH USERNAME
 
-async function fetchUsernames() {
+function fetchUsernames() {
   try {
-    const userNameResponse = await fetch(
-      "http://localhost:3000/api/docs/#/Users/get_api_v1_users_"
-    );
+    const userNameResponse = fetch("http://localhost:3000/api/v1/users");
     if (!userNameResponse.ok) {
       throw new Error("Failed to fetch usernames");
     }
-    const data = await userNameResponse.json();
+    const data = userNameResponse.json();
     return data.usernames;
   } catch (error) {
     console.error("Error fetching usernames:", error.message);
@@ -65,7 +54,7 @@ async function fetchUsernames() {
   }
 }
 
-async function displayLoggedInUsername() {
+function displayLoggedInUsername() {
   try {
     const token = localStorage.getItem("token");
     if (!token) {
@@ -73,9 +62,9 @@ async function displayLoggedInUsername() {
       return;
     }
 
-    const usernames = await fetchUsernames();
+    const usernames = fetchUsernames();
     if (usernames) {
-      const loggedInUser = username.find((user) => user.token === token);
+      const loggedInUser = usernames.find((user) => user.token === token);
       if (loggedInUser) {
         const profileNav = document.querySelector(".home-nav-btn.profile-nav");
         if (profileNav) {
@@ -177,12 +166,12 @@ document.addEventListener("DOMContentLoaded", function () {
   usernameElement.innerHTML = `<span>${username}</span>`;
 });
 
-async function unFollow(classID,structNum){
-  z = document.querySelector('.'+classID).textContent;
-  if (z == 'Follow') {
-      document.querySelector('.'+classID).textContent = 'Following';
+async function unFollow(classID, structNum) {
+  z = document.querySelector("." + classID).textContent;
+  if (z == "Follow") {
+    document.querySelector("." + classID).textContent = "Following";
   } else {
-      document.querySelector('.'+classID).textContent = 'Follow';
+    document.querySelector("." + classID).textContent = "Follow";
   }
 }
 */
@@ -244,4 +233,9 @@ async function unfollowUser() {
   } catch (error) {
       console.error(error);
   }
+}
+
+function logOut(event) {
+  window.location.href = "login.html";
+  localStorage.clear();
 }
