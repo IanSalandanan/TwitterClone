@@ -84,6 +84,15 @@ pla panah */
   margin-top: 3px;
 }
 
+#nav-title-log-out-title {
+  font-size: 10px;
+}
+
+.home-nav-btn button {
+  width: 180px;
+  height: 70px;
+}
+
 .nav-btn {
   transition: all 300ms ease;
   border: none;
@@ -93,7 +102,6 @@ pla panah */
   padding: 1rem;
   gap: 3px;
 }
-
 
 .nav-btn:hover {
   background: rgba(18, 18, 18, 0.7);
@@ -107,11 +115,6 @@ pla panah */
 
 .nav-btn:hover #prof-btn-title {
   color: white;
-}
-
-.nav-icon {
-  height: 35px;
-  width: 35px;
 }
 
 .nav-btn .nav-icon {
@@ -202,6 +205,10 @@ a {
   font-weight: lighter; /*INIBA KO NA YUNG WEIGHT NUNG ICONS MATCHA KAYLA KERBY*/
   margin-top: 2px;
   color: black;
+}
+
+.nav-icon.material-symbols-outlined:hover {
+  color: white;
 }
 
 .prof-btn-avatar .material-symbols-outlined {
@@ -322,10 +329,6 @@ button {
   color: aliceblue;
   font-size: 20px;
   font-weight: 50;
-}
-
-.user-tab-4 {
-  /* padding: 20px 20px 0px 20px; */
 }
 
 .tab-4-item span {
@@ -527,76 +530,6 @@ button {
 
 /*********************************************/
 
-/*REVISED NAV BAR CSS copied from kerby*/
-
-/* body {
-  display: flex;
-  height: 100vh;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0 40px;
-
-  background-image: url(./assets/sonata2.gif);
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-size: cover;
-  backdrop-filter: blur(15px);
-}
-
-.sidebar {
-  flex: 0.2;
-  min-width: 230px;
-  margin-top: 20px;
-  margin-left: 120px;
-  padding-left: 20px;
-  padding-right: 20px;
-  height: 95vh;
-}
-
-.sidebar {
-  background-color: rgba(240, 240, 240, 0.2);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 4px 6px rgb(1, 1, 1, 0.1);
-  border-radius: 20px;
-}
-
-.sidebarOpt {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-}
-
-.sidebarOpt,
-h2 {
-  font-weight: 800;
-  font-size: 20px;
-  margin-right: 20px;
-  font-family: poppins;
-}
-
-.side-header {
-  display: flex;
-}
-
-#owl {
-  margin-top: 1.5rem;
-  width: 70px;
-  height: 40px;
-}
-
-.logo {
-  font-family: poppins;
-  margin-bottom: 5rem;
-  margin-top: 1.5rem;
-  margin-left: 0.5rem;
-}
-
-.sidebarOpt {
-  border-radius: 30px;
-  color: black;
-} */
-
-/**/
 .tab-2-handle.tab-2-profile-name {
   align-items: flex-end;
 }

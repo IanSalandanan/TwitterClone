@@ -38,61 +38,95 @@ async function getTweets() {
     .catch((error) => console.log(error));
 }
 
+// DISPLAY USERNAME IN NAV
+function getUsernameFromLocalStorage() {
+  const token = localStorage.getItem("token");
+  if (token) {
+    const payload = JSON.parse(atob(token.split(".")[1]));
+    return payload.username;
+  }
+  return null;
+}
+
+var logged_username = getUsernameFromLocalStorage();
+
+function displayUsername() {
+  if (logged_username) {
+    console.log("Username retrieved from localStorage:", logged_username);
+  } else {
+    console.log("No username found in localStorage.");
+  }
+
+  const usernameElement = document.getElementById("user-prof-username");
+  if (usernameElement !== null) {
+    usernameElement.innerText = `${logged_username}`;
+  }
+
+  const tabUsernameElement = document.querySelector(".user-name-text");
+  if (tabUsernameElement !== null) {
+    tabUsernameElement.innerText = logged_username;
+  }
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  displayUsername();
+});
+
 // USER BUTTON IN NAV BAR - FUNCTION TO FETCH USERNAME
 
-function fetchUsernames() {
-  try {
-    const userNameResponse = fetch("http://localhost:3000/api/v1/users");
-    if (!userNameResponse.ok) {
-      throw new Error("Failed to fetch usernames");
-    }
-    const data = userNameResponse.json();
-    return data.usernames;
-  } catch (error) {
-    console.error("Error fetching usernames:", error.message);
-    return null;
-  }
-}
+// function fetchUsernames() {
+//   try {
+//     const userNameResponse = fetch("http://localhost:3000/api/v1/users");
+//     if (!userNameResponse.ok) {
+//       throw new Error("Failed to fetch usernames");
+//     }
+//     const data = userNameResponse.json();
+//     return data.usernames;
+//   } catch (error) {
+//     console.error("Error fetching usernames:", error.message);
+//     return null;
+//   }
+// }
 
-function displayLoggedInUsername() {
-  try {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      console.error("Token not found in local storage");
-      return;
-    }
+// function displayLoggedInUsername() {
+//   try {
+//     const token = localStorage.getItem("token");
+//     if (!token) {
+//       console.error("Token not found in local storage");
+//       return;
+//     }
 
-    const usernames = fetchUsernames();
-    if (usernames) {
-      const loggedInUser = usernames.find((user) => user.token === token);
-      if (loggedInUser) {
-        const profileNav = document.querySelector(".home-nav-btn.profile-nav");
-        if (profileNav) {
-          profileNav.innerHTML = `
-          <button class="nav-btn">
-            <div class="follow__avatar">
-              <span class="material-symbols-outlined prof-nav-icon">account_circle</span>
-            </div>
-            <div>
-              <span><h4 id="prof-btn-title">${loggedInUser.username}</h4></span>
-            </div>
-          </button>
-        `;
-        }
-      } else {
-        console.error("Logged-in user not found in the list of usernames");
-      }
-    } else {
-      console.error("Failed to fetch usernames");
-    }
-  } catch (error) {
-    console.error("Error displaying logged-in user's username:", error.message);
-  }
-}
+//     const usernames = fetchUsernames();
+//     if (usernames) {
+//       const loggedInUser = usernames.find((user) => user.token === token);
+//       if (loggedInUser) {
+//         const profileNav = document.querySelector(".home-nav-btn.profile-nav");
+//         if (profileNav) {
+//           profileNav.innerHTML = `
+//           <button class="nav-btn">
+//             <div class="follow__avatar">
+//               <span class="material-symbols-outlined prof-nav-icon">account_circle</span>
+//             </div>
+//             <div>
+//               <span><h4 id="prof-btn-title">${loggedInUser.username}</h4></span>
+//             </div>
+//           </button>
+//         `;
+//         }
+//       } else {
+//         console.error("Logged-in user not found in the list of usernames");
+//       }
+//     } else {
+//       console.error("Failed to fetch usernames");
+//     }
+//   } catch (error) {
+//     console.error("Error displaying logged-in user's username:", error.message);
+//   }
+// }
 
-window.onload = function () {
-  displayLoggedInUsername();
-};
+// window.onload = function () {
+//   displayLoggedInUsername();
+// };
 
 // async function getTweets(user, token) {
 //   let token = localStorage.getItem("token");
@@ -175,63 +209,67 @@ async function unFollow(classID, structNum) {
   }
 }
 */
-async function unFollow(classID,structNum){
-  z = document.querySelector('.'+classID).textContent;
-  if (z == 'Follow') {
-      document.querySelector('.'+classID).textContent = 'Following';
+async function unFollow(classID, structNum) {
+  z = document.querySelector("." + classID).textContent;
+  if (z == "Follow") {
+    document.querySelector("." + classID).textContent = "Following";
   } else {
-      document.querySelector('.'+classID).textContent = 'Follow';
+    document.querySelector("." + classID).textContent = "Follow";
   }
 }
 
 async function followUser() {
-  const token = localStorage.getItem('token');
+  const token = localStorage.getItem("token");
   const rawData = document.getElementById("username");
-  const userToFollow = rawData.value; 
+  const userToFollow = rawData.value;
 
-  const res = await fetch(`http://localhost:3000/api/v1/users/${logged_username}/following/${userToFollow}`, {
-      method: 'POST',
+  const res = await fetch(
+    `http://localhost:3000/api/v1/users/${logged_username}/following/${userToFollow}`,
+    {
+      method: "POST",
       headers: {
-          'Content-Type': 'application/json',
-          "Authorization": `Bearer ${token}`
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify({userToFollow})
-  });
+      body: JSON.stringify({ userToFollow }),
+    }
+  );
 
   try {
-      if (!res.ok) {
-          throw new Error(`API request failed with status ${res.status}`);
-      }
-      else {
-          console.log(`Followed: ${userToFollow}`);
-      }
+    if (!res.ok) {
+      throw new Error(`API request failed with status ${res.status}`);
+    } else {
+      console.log(`Followed: ${userToFollow}`);
+    }
   } catch (error) {
-      console.error(error);
+    console.error(error);
   }
 }
 
 async function unfollowUser() {
-  const token = localStorage.getItem('token');
+  const token = localStorage.getItem("token");
   const rawData = document.getElementById("username");
-  const userToUnfollow = rawData.value; 
+  const userToUnfollow = rawData.value;
 
-  const res = await fetch(`http://localhost:3000/api/v1/users/${logged_username}/following/${userToUnfollow}`, {
-      method: 'DELETE',
+  const res = await fetch(
+    `http://localhost:3000/api/v1/users/${logged_username}/following/${userToUnfollow}`,
+    {
+      method: "DELETE",
       headers: {
-          'Content-Type': 'application/json',
-          "Authorization": `Bearer ${token}`
-      }
-  });
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
 
   try {
-      if (!res.ok) {
-          throw new Error(`API request failed with status ${res.status}`);
-      }
-      else {
-          console.log(`Unfollowed: ${userToUnfollow}`);
-      }
+    if (!res.ok) {
+      throw new Error(`API request failed with status ${res.status}`);
+    } else {
+      console.log(`Unfollowed: ${userToUnfollow}`);
+    }
   } catch (error) {
-      console.error(error);
+    console.error(error);
   }
 }
 
