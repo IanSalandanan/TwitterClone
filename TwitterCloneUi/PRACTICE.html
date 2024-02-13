@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create User and Get Token</title>
+
+<script>
+       
+    function regisPass() {
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        register(username, password);
+    }
+
+    async function register(username, password){
+        const userData = {
+            'username': username,
+            'password': password
+        };
+
+        try {
+            const response = await fetch('http://localhost:3000/api/v1/auth/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(userData)
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to create user');
+            } 
+            else{
+                const responseData = await response.json();
+                console.log(responseData)
+                console.log('User created successfully!');
+            }
+            
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Failed to create user. Please try again.');
+        }
+    }
+       
+    function loginPass(){
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        login(username, password);
+    }
+
+    async function login(username, password){
+        try {
+            const response = await fetch('http://localhost:3000/api/v1/auth/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    'username': username,
+                    'password': password
+                })
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                console.log(errorData)
+            }else{
+                const tokenData = await response.text();
+                localStorage.setItem('token', tokenData);
+                console.log('User created successfully!');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Failed to create user. Please try again.');
+        }
+    }
+        
+   
+</script>
+</head>
+
+<body>
+    <h1>Create User and Get Token</h1>  
+    <form id="createUserForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <br>
+        <button type="submit" onclick="regisPass">Register User</button>
+        <button type="submit" onclick="loginPass">Log In</button>
+    </form>  
+</body>
+</html>
