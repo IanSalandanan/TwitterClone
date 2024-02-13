@@ -85,7 +85,8 @@ pla panah */
 }
 
 #nav-title-log-out-title {
-  font-size: 10px;
+  font-size: 20px;
+  margin-top: 2px;
 }
 
 .home-nav-btn button {
@@ -175,7 +176,7 @@ a {
 #prof-btn-title {
   color: black;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 20px;
   margin-top: 5px;
 }
 
@@ -189,6 +190,7 @@ a {
   margin-right: auto;
   margin-left: auto;
   max-width: fit-content;
+  gap: 1.5rem;
 }
 
 .home-nav-btn {
