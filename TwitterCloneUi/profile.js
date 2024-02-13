@@ -22,14 +22,9 @@ function displayUsername() {
     console.log("No username found in localStorage.");
   }
 
-  const usernameElement = document.getElementById("user-prof-username");
+  const usernameElement = document.getElementById("nav-profile-username");
   if (usernameElement !== null) {
     usernameElement.innerText = `${logged_username}`;
-  }
-
-  const tabUsernameElement = document.querySelector(".user-name-text");
-  if (tabUsernameElement !== null) {
-    tabUsernameElement.innerText = logged_username;
   }
 }
 
