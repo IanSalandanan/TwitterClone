@@ -79,6 +79,35 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
+async function getFollowing() {
+    const token = localStorage.getItem('token');
+    const loggedUsername = getUsernameFromLocalStorage(); // Assuming you have a function to get the logged-in username
+  
+    try {
+      const response = await fetch(`http://localhost:3000/api/v1/users/${loggedUsername}/following`, {
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+  
+      if (!response.ok) {
+        throw new Error(`Failed to fetch following: ${response.status}`);
+      }
+  
+      const data = await response.json();
+      console.log('Following:', data); // Assuming data is an array of usernames
+      // Handle the retrieved list of following users as needed
+    } catch (error) {
+      console.error('Error fetching following:', error);
+    }
+  }
+  
+  // Call the function to fetch the list of following users
+  getFollowing();
+  
+
+//unfollow follow mechanisms
   
 async function unFollow(classID,structNum){
     z = document.querySelector('.'+classID).textContent;
@@ -89,53 +118,55 @@ async function unFollow(classID,structNum){
     }
 }
 
-async function followUser() {
-    const token = localStorage.getItem('token');
-    const rawData = document.getElementById("username");
-    const userToFollow = rawData.value; 
 
-    const res = await fetch(`http://localhost:3000/api/v1/users/${logged_username}/following/${userToFollow}`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            "Authorization": `Bearer ${token}`
-        },
-        body: JSON.stringify({userToFollow})
-    });
 
-    try {
-        if (!res.ok) {
-            throw new Error(`API request failed with status ${res.status}`);
-        }
-        else {
-            console.log(`Followed: ${userToFollow}`);
-        }
-    } catch (error) {
-        console.error(error);
-    }
-}
+// async function followUser() {
+//     const token = localStorage.getItem('token');
+//     const rawData = document.getElementById("username");
+//     const userToFollow = rawData.value; 
 
-async function unfollowUser() {
-    const token = localStorage.getItem('token');
-    const rawData = document.getElementById("username");
-    const userToUnfollow = rawData.value; 
+//     const res = await fetch(`http://localhost:3000/api/v1/users/${logged_username}/following/${userToFollow}`, {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json',
+//             "Authorization": `Bearer ${token}`
+//         },
+//         body: JSON.stringify({userToFollow})
+//     });
 
-    const res = await fetch(`http://localhost:3000/api/v1/users/${logged_username}/following/${userToUnfollow}`, {
-        method: 'DELETE',
-        headers: {
-            'Content-Type': 'application/json',
-            "Authorization": `Bearer ${token}`
-        }
-    });
+//     try {
+//         if (!res.ok) {
+//             throw new Error(`API request failed with status ${res.status}`);
+//         }
+//         else {
+//             console.log(`Followed: ${userToFollow}`);
+//         }
+//     } catch (error) {
+//         console.error(error);
+//     }
+// }
 
-    try {
-        if (!res.ok) {
-            throw new Error(`API request failed with status ${res.status}`);
-        }
-        else {
-            console.log(`Unfollowed: ${userToUnfollow}`);
-        }
-    } catch (error) {
-        console.error(error);
-    }
-}
+// async function unfollowUser() {
+//     const token = localStorage.getItem('token');
+//     const rawData = document.getElementById("username");
+//     const userToUnfollow = rawData.value; 
+
+//     const res = await fetch(`http://localhost:3000/api/v1/users/${logged_username}/following/${userToUnfollow}`, {
+//         method: 'DELETE',
+//         headers: {
+//             'Content-Type': 'application/json',
+//             "Authorization": `Bearer ${token}`
+//         }
+//     });
+
+//     try {
+//         if (!res.ok) {
+//             throw new Error(`API request failed with status ${res.status}`);
+//         }
+//         else {
+//             console.log(`Unfollowed: ${userToUnfollow}`);
+//         }
+//     } catch (error) {
+//         console.error(error);
+//     }
+// }
