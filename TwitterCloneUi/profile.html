@@ -34,50 +34,45 @@
           <div class="main-nav">
             <!--HOME BUTTON-->
             <div class="home-nav-btn">
-              <a href="">
+              <a href="timeline.html">
                 <button class="nav-btn">
                   <span class="nav-icon material-symbols-outlined"> home </span>
-
-                  <a href="timeline.html"><h2 id="nav-title">Home</h2></a>
+                  <h2 id="nav-title">Home</h2>
                 </button>
               </a>
             </div>
 
             <!--PROFILE BUTTON-->
             <div class="home-nav-btn">
-              <a href=""
+              <a href="profile.html"
                 ><button class="nav-btn">
                   <span class="nav-icon material-symbols-outlined">
                     person
                   </span>
-                  <a href="profile.html"><h2 id="nav-title">Profile</h2></a>
+                  <h2 id="nav-title">Profile</h2>
                 </button></a
               >
             </div>
 
             <!--FOLLOWING BUTTON-->
             <div class="home-nav-btn">
-              <a href="">
+              <a href="following.html">
                 <button class="nav-btn">
                   <span class="nav-icon material-symbols-outlined">
                     group
                   </span>
-                  <a href="following.html"><h2 id="nav-title">Following</h2></a>
+                  <h2 id="nav-title">Following</h2>
                 </button>
               </a>
             </div>
 
             <!--SIGN OUT BUTTON-->
             <div class="home-nav-btn">
-              <a href="">
-                <!--LAGAY HERE YUNG HTML FOR THE HOME PAGE HTML-->
-                <button class="nav-btn">
-                  <span class="nav-icon material-symbols-outlined">
-                    logout
-                  </span>
-                  <h2 id="nav-title">Log Out</h2>
-                </button>
-              </a>
+              <!--LAGAY HERE YUNG HTML FOR THE HOME PAGE HTML-->
+              <button class="nav-btn" onclick="logOut(event)">
+                <span class="nav-icon material-symbols-outlined"> logout </span>
+                <h2 id="nav-title">Log Out</h2>
+              </button>
             </div>
           </div>
 
@@ -116,17 +111,9 @@
               </div>
             </div>
             <div class="user-tab-2">
-              <div class="tab-2-handle tab-2-profile-name">
-                <span
-                  ><h2 class="profile-text" id="profile-name">
-                    Profile Name
-                  </h2></span
-                >
-              </div>
-              <!-- <h2 class="profile-text">dokyeom</h2> -->
               <div class="tab-2-handle">
                 <span
-                  ><p class="profile-text user-name-text">@username</p></span
+                  ><h3 class="profile-text user-name-text">username</h3></span
                 >
               </div>
             </div>
@@ -134,10 +121,16 @@
               <span> <p class="profile-text profile-bio-text"></p></span>
             </div>
             <div class="user-tab-4">
-              <a class="tab-4-item" href="#">
-                <!-- <span class="profile-text">FOLLOWING</span> -->
-                <button class="follow-btn-1" type="button" onclick="unFollow('follow-btn-1', '1')">Follow</button>  
-              </a>
+              <!-- <a class="tab-4-item" href="#"> -->
+              <!-- <span class="profile-text">FOLLOWING</span> -->
+              <button
+                class="follow-btn-1"
+                type="button"
+                onclick="unFollow('follow-btn-1', '1')"
+              >
+                Follow
+              </button>
+              <!-- </a> -->
             </div>
           </div>
         </div>
