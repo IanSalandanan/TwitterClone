@@ -109,7 +109,8 @@ pla panah */
   color: white;
 }
 
-.nav-btn:hover #nav-title {
+.nav-btn:hover #nav-title,
+.nav-btn:hover .nav-icon.material-symbols-outlined {
   color: white;
 }
 
