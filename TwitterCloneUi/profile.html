@@ -79,16 +79,18 @@
           <!--PROFILE ICON/BUTTON-->
           <div class="prof-nav-sect">
             <div class="home-nav-btn profile-nav">
-              <button class="nav-btn">
-                <div class="follow__avatar">
-                  <span class="material-symbols-outlined prof-nav-icon"
-                    >account_circle</span
-                  >
-                </div>
-                <div>
-                  <span><p id="nav-profile-username">@Username</p></span>
-                </div>
-              </button>
+              <a href="profile.html">
+                <button class="nav-btn">
+                  <div class="follow__avatar">
+                    <span class="material-symbols-outlined prof-nav-icon"
+                      >account_circle</span
+                    >
+                  </div>
+                  <div>
+                    <span><p id="nav-profile-username">Username</p></span>
+                  </div>
+                </button>
+              </a>
             </div>
           </div>
         </div>
@@ -140,9 +142,38 @@
         </div>
         <div class="twatter-profile-feed">
           <!-- PROFILE FEED IS STILL UNDER CONSTRUCTION-->
-          <div class="twatter-profile-tweet">
-            <!-- FIRST TWEET -->
-            <div class="follow__avatar">
+          <!-- <div class="twatter-profile-tweet"> -->
+          <!-- FIRST TWEET -->
+          <!-- <div class="follow__avatar">
+              <span class="tweet-prof-avatar material-symbols-outlined"
+                >account_circle</span
+              >
+            </div>
+            <div class="tweet-content">
+              <div class="tweet-content-details">
+                <span
+                  ><h4
+                    class="tweet-name tweet-profile-name"
+                    id="user-tweet-username"
+                  >
+                    Profile Name
+                  </h4></span
+                >
+              </div>
+              <div class="tweet-content-container">
+                <span><p class="tweet-text">backburner</p></span>
+              </div>
+              <div class="twatter-heart-container">
+                <button class="heart-button" onclick="toggleLike(this)">
+                  <span class="material-symbols-outlined"> favorite </span>
+                </button>
+              </div>
+            </div>
+          </div> -->
+
+          <!-- <div class="twatter-profile-tweet"> -->
+          <!-- SECOND TWEET -->
+          <!-- <div class="follow__avatar">
               <span class="tweet-prof-avatar material-symbols-outlined"
                 >account_circle</span
               >
@@ -153,11 +184,41 @@
                   ><h4 class="tweet-name tweet-profile-name">
                     Profile Name
                   </h4></span
-                >
-                <span class="publication-details">
+                > -->
+          <!-- <span class="publication-details">
                   <span><p class="publication-pub-date">Nov 27, 2023</p></span>
-                </span>
-                <div class="twatter-heart-container">
+                </span> -->
+          <!-- <div class="twatter-heart-container">
+                  <button class="heart-button" onclick="toggleLike(this)">
+                    <span class="material-symbols-outlined"> favorite </span>
+                    <span><p class="like-count-text">5 Likes</p></span> -->
+          <!--FIX SPACING-->
+          <!-- </button>
+                </div>
+              </div>
+              <div class="tweet-content-container">
+                <span><p class="tweet-text">backburner</p></span>
+              </div>
+            </div>
+          </div>
+          <div class="twatter-profile-tweet"> -->
+          <!-- THIRD TWEET -->
+          <!-- <div class="follow__avatar">
+              <span class="tweet-prof-avatar material-symbols-outlined"
+                >account_circle</span
+              >
+            </div>
+            <div class="tweet-content">
+              <div class="tweet-content-details">
+                <span
+                  ><h4 class="tweet-name tweet-profile-name">
+                    Profile Name
+                  </h4></span
+                > -->
+          <!-- <span class="publication-details">
+                  <span><p class="publication-pub-date">Nov 27, 2023</p></span>
+                </span> -->
+          <!-- <div class="twatter-heart-container">
                   <button class="heart-button" onclick="toggleLike(this)">
                     <span class="material-symbols-outlined"> favorite </span>
                     <span><p class="like-count-text">5 Likes</p></span>
@@ -169,9 +230,9 @@
               </div>
             </div>
           </div>
-          <div class="twatter-profile-tweet">
-            <!-- SECOND TWEET -->
-            <div class="follow__avatar">
+          <div class="twatter-profile-tweet"> -->
+          <!-- LAST TWEET -->
+          <!-- <div class="follow__avatar">
               <span class="tweet-prof-avatar material-symbols-outlined"
                 >account_circle</span
               >
@@ -182,41 +243,11 @@
                   ><h4 class="tweet-name tweet-profile-name">
                     Profile Name
                   </h4></span
-                >
-                <span class="publication-details">
+                > -->
+          <!-- <span class="publication-details">
                   <span><p class="publication-pub-date">Nov 27, 2023</p></span>
-                </span>
-                <div class="twatter-heart-container">
-                  <button class="heart-button" onclick="toggleLike(this)">
-                    <span class="material-symbols-outlined"> favorite </span>
-                    <span><p class="like-count-text">5 Likes</p></span>
-                    <!--FIX SPACING-->
-                  </button>
-                </div>
-              </div>
-              <div class="tweet-content-container">
-                <span><p class="tweet-text">backburner</p></span>
-              </div>
-            </div>
-          </div>
-          <div class="twatter-profile-tweet">
-            <!-- THIRD TWEET -->
-            <div class="follow__avatar">
-              <span class="tweet-prof-avatar material-symbols-outlined"
-                >account_circle</span
-              >
-            </div>
-            <div class="tweet-content">
-              <div class="tweet-content-details">
-                <span
-                  ><h4 class="tweet-name tweet-profile-name">
-                    Profile Name
-                  </h4></span
-                >
-                <span class="publication-details">
-                  <span><p class="publication-pub-date">Nov 27, 2023</p></span>
-                </span>
-                <div class="twatter-heart-container">
+                </span> -->
+          <!-- <div class="twatter-heart-container">
                   <button class="heart-button" onclick="toggleLike(this)">
                     <span class="material-symbols-outlined"> favorite </span>
                     <span><p class="like-count-text">5 Likes</p></span>
@@ -227,36 +258,7 @@
                 <span><p class="tweet-text">backburner</p></span>
               </div>
             </div>
-          </div>
-          <div class="twatter-profile-tweet">
-            <!-- LAST TWEET -->
-            <div class="follow__avatar">
-              <span class="tweet-prof-avatar material-symbols-outlined"
-                >account_circle</span
-              >
-            </div>
-            <div class="tweet-content">
-              <div class="tweet-content-details">
-                <span
-                  ><h4 class="tweet-name tweet-profile-name">
-                    Profile Name
-                  </h4></span
-                >
-                <span class="publication-details">
-                  <span><p class="publication-pub-date">Nov 27, 2023</p></span>
-                </span>
-                <div class="twatter-heart-container">
-                  <button class="heart-button" onclick="toggleLike(this)">
-                    <span class="material-symbols-outlined"> favorite </span>
-                    <span><p class="like-count-text">5 Likes</p></span>
-                  </button>
-                </div>
-              </div>
-              <div class="tweet-content-container">
-                <span><p class="tweet-text">backburner</p></span>
-              </div>
-            </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
