@@ -141,6 +141,27 @@ document.addEventListener("DOMContentLoaded", function () {
   profileUsernameElement.textContent = username;
 });
 
+// ito yung pagtanggal kay follow button kapag nasa profile ni logged in user
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Read the username from the URL parameter
+  const urlParams = new URLSearchParams(window.location.search);
+  const username = urlParams.get("username");
+
+  // Check if the username matches the username of the currently logged-in user
+  if (username && username !== logged_username) {
+    const followButtonContainer = document.querySelector(".user-tab-4");
+    const followButton = document.createElement("button");
+    followButton.className = "follow-btn-1";
+    followButton.type = "button";
+    followButton.textContent = "Follow";
+    followButton.onclick = function () {
+      followUnfollow("follow-btn-1");
+    };
+    followButtonContainer.appendChild(followButton);
+  }
+});
+
 // async function unfollowUser() {
 //   const token = localStorage.getItem("token");
 //   const rawData = document.getElementById("username");
