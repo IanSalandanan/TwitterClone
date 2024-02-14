@@ -159,7 +159,25 @@ async function unFollow(classID,structNum){
     }
 }
 
+// connected sya sa profle - para ma-change yung profile name at username kay suggested user
 
+document.addEventListener("DOMContentLoaded", function () {
+    const suggestedUserLinks = document.querySelectorAll('.suggested-user');
+    suggestedUserLinks.forEach(function (userLink) {
+        userLink.addEventListener('click', function(event) {
+            event.preventDefault();
+            const clickedUsername = event.target.textContent.trim();
+            updateUrlParameter('username', clickedUsername);
+            window.location.href = 'profile.html';
+        });
+    });
+
+    function updateUrlParameter(key, value) {
+        const url = new URL(window.location.href);
+        url.searchParams.set(key, value);
+        window.history.pushState({}, '', url);
+    }
+});
 
 // async function followUser() {
 //     const token = localStorage.getItem('token');

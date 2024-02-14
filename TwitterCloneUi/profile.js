@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const usernameElement = document.getElementById("profile-username");
 
   // Set the inner HTML of the element with the username
-  usernameElement.innerHTML = `<span>${username}</span>`;
+  usernameElement.innerHTML = `<span>${logged_username}</span>`;
 });
 
 
@@ -129,6 +129,20 @@ async function followUser(usernameToFollow) {
     console.error(error);
   }
 }
+
+// connected siya kay following - para ma-change yung profile name at username kay suggested user
+
+document.addEventListener("DOMContentLoaded", function () {
+  const urlParams = new URLSearchParams(window.location.search);
+  let username = urlParams.get('username');
+
+  if (!username) {
+      username = logged_username;
+  }
+
+  const profileUsernameElement = document.getElementById("profile-username");
+  profileUsernameElement.textContent = username;
+});
 
 // async function unfollowUser() {
 //   const token = localStorage.getItem("token");
