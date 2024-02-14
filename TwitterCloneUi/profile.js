@@ -90,21 +90,6 @@ document.addEventListener("DOMContentLoaded", function () {
   usernameElement.innerHTML = `<span>${logged_username}</span>`;
 });
 
-
-async function unFollow(classID){
-
-  const followButton = document.querySelector('.' + classID);
-  const username = getQueryParam("username"); // Get username from URL query parameter
-
-  z = document.querySelector('.'+classID).textContent;
-  if (z == 'Follow') {
-      document.querySelector('.'+classID).textContent = 'Following';
-      followUser(username);
-  } else {
-      document.querySelector('.'+classID).textContent = 'Follow';
-  }
-}
-
 async function followUser(usernameToFollow) {
   const token = localStorage.getItem('token');
   //const loggedUsername = localStorage.getItem('logged_username');
@@ -144,6 +129,27 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const profileUsernameElement = document.getElementById("profile-username");
   profileUsernameElement.textContent = username;
+});
+
+// ito yung pagtanggal kay follow button kapag nasa profile ni logged in user
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Read the username from the URL parameter
+  const urlParams = new URLSearchParams(window.location.search);
+  const username = urlParams.get('username');
+  
+  // Check if the username matches the username of the currently logged-in user
+  if (username && username !== logged_username) {
+      const followButtonContainer = document.querySelector('.user-tab-4');
+      const followButton = document.createElement('button');
+      followButton.className = 'follow-btn-1';
+      followButton.type = 'button';
+      followButton.textContent = 'Follow';
+      followButton.onclick = function() {
+          followUnfollow('follow-btn-1');
+      };
+      followButtonContainer.appendChild(followButton);
+  }
 });
 
 // async function unfollowUser() {
