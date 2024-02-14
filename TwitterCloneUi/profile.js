@@ -32,7 +32,6 @@ document.addEventListener("DOMContentLoaded", function () {
   displayUsername();
 });
 
-
 // Function to parse URL query parameters
 
 function getQueryParam(name) {
@@ -51,27 +50,23 @@ document.addEventListener("DOMContentLoaded", function () {
   usernameElement.innerHTML = `<span>${username}</span>`;
 });
 
-
 async function unFollow(classID, structNum) {
-  const followButton = document.querySelector('.' + classID);
+  const followButton = document.querySelector("." + classID);
   const username = getQueryParam("username"); // Get username from URL query parameter
-  
-  if (followButton.textContent === 'Follow') {
-    followButton.textContent = 'Following';
+
+  if (followButton.textContent === "Follow") {
+    followButton.textContent = "Following";
     followUser(username);
   } else {
     document.querySelector("." + classID).textContent = "Follow";
   }
 
-
   //display username of logged user
-  const usernameElement = document.getElementById('nav-profile-username');
-  if (usernameElement !== null){
-      usernameElement.innerHTML = `<h3>${logged_username}</h3>`; 
+  const usernameElement = document.getElementById("nav-profile-username");
+  if (usernameElement !== null) {
+    usernameElement.innerHTML = `<h3>${logged_username}</h3>`;
   }
 }
-
-
 
 // Function to parse URL query parameters (to get username to follow)
 function getQueryParam(name) {
@@ -90,30 +85,30 @@ document.addEventListener("DOMContentLoaded", function () {
   usernameElement.innerHTML = `<span>${logged_username}</span>`;
 });
 
-
-async function unFollow(classID){
-
-  const followButton = document.querySelector('.' + classID);
+async function unFollow(classID) {
+  const followButton = document.querySelector("." + classID);
   const username = getQueryParam("username"); // Get username from URL query parameter
 
-  z = document.querySelector('.'+classID).textContent;
-  if (z == 'Follow') {
-      document.querySelector('.'+classID).textContent = 'Following';
-      followUser(username);
+  z = document.querySelector("." + classID).textContent;
+  if (z == "Follow") {
+    document.querySelector("." + classID).textContent = "Following";
+    followUser(username);
   } else {
-      document.querySelector('.'+classID).textContent = 'Follow';
+    document.querySelector("." + classID).textContent = "Follow";
   }
 }
 
 async function followUser(usernameToFollow) {
-  const token = localStorage.getItem('token');
+  const token = localStorage.getItem("token");
   //const loggedUsername = localStorage.getItem('logged_username');
 
-  const res = await fetch(`http://localhost:3000/api/v1/users/${logged_username}/following/${usernameToFollow}`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`
+  const res = await fetch(
+    `http://localhost:3000/api/v1/users/${logged_username}/following/${usernameToFollow}`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({ usernameToFollow }),
     }
@@ -124,7 +119,7 @@ async function followUser(usernameToFollow) {
       throw new Error(`API request failed with status ${res.status}`);
     } else {
       console.log(`Followed: ${usernameToFollow}`);
-      const status = 'followed';
+      const status = "followed";
       return status;
     }
   } catch (error) {
@@ -136,10 +131,10 @@ async function followUser(usernameToFollow) {
 
 document.addEventListener("DOMContentLoaded", function () {
   const urlParams = new URLSearchParams(window.location.search);
-  let username = urlParams.get('username');
+  let username = urlParams.get("username");
 
   if (!username) {
-      username = logged_username;
+    username = logged_username;
   }
 
   const profileUsernameElement = document.getElementById("profile-username");
@@ -193,14 +188,13 @@ async function unfollowUser(usernameToUnfollow) {
 //       console.log("user is followed, so next imma change the button to following");
 //       document.querySelector("." + classID).textContent = "Following";
 //       }
-//     else 
+//     else
 //     {
 //       console.log("user unfollowed, so button change to follow");
 //       document.querySelector("." + classID).textContent = "Follow";
 //       // throw new Error(`checkstatus: API request failed with status ${res.status}`);
 //     }
-     
-    
+
 //   } catch (error) {
 //     console.error(error);
 //   }
@@ -227,7 +221,7 @@ async function unfollowUser(usernameToUnfollow) {
 //     // Display username of logged user
 //     const usernameElement = document.getElementById('nav-profile-username');
 //     if (usernameElement !== null){
-//       usernameElement.innerHTML = `<h3>${logged_username}</h3>`; 
+//       usernameElement.innerHTML = `<h3>${logged_username}</h3>`;
 //     }
 
 //     // Check if the user is already followed or not thru refreshing and then act accordingly
@@ -250,13 +244,13 @@ function getFollowStatusFromLocalStorage(username) {
 // Function to toggle follow/unfollow status
 async function toggleFollowStatus(username) {
   const currentStatus = getFollowStatusFromLocalStorage(username);
-  const newStatus = currentStatus === 'followed' ? 'unfollowed' : 'followed';
+  const newStatus = currentStatus === "followed" ? "unfollowed" : "followed";
   updateFollowStatusInLocalStorage(username, newStatus);
 }
 
 // Usage example:
 async function followUnfollow(classID) {
-  const followButton = document.querySelector('.' + classID);
+  const followButton = document.querySelector("." + classID);
   const username = getQueryParam("username");
 
   // Toggle follow/unfollow status
@@ -264,32 +258,29 @@ async function followUnfollow(classID) {
 
   // Update button text based on new status
   const newStatus = getFollowStatusFromLocalStorage(username);
-  if (newStatus === 'followed') {
-      followButton.textContent = 'Following';
-      await followUser(username);
-      
+  if (newStatus === "followed") {
+    followButton.textContent = "Following";
+    await followUser(username);
   } else {
-      followButton.textContent = 'Follow';
-      await unfollowUser(username);
+    followButton.textContent = "Follow";
+    await unfollowUser(username);
   }
 }
 
 // Update button text based on initial follow/unfollow status
-document.addEventListener("DOMContentLoaded", async function() {
-  const followButton = document.querySelector('.follow-btn-1');
+document.addEventListener("DOMContentLoaded", async function () {
+  const followButton = document.querySelector(".follow-btn-1");
   const username = getQueryParam("username");
   const initialStatus = getFollowStatusFromLocalStorage(username);
 
-  if (initialStatus === 'followed') {
-      followButton.textContent = 'Following';
+  if (initialStatus === "followed") {
+    followButton.textContent = "Following";
   } else {
-      followButton.textContent = 'Follow';
+    followButton.textContent = "Follow";
   }
 });
-
 
 function logOut(event) {
   window.location.href = "login.html";
   localStorage.clear();
 }
-
