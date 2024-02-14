@@ -1,3 +1,5 @@
+//FUNCTION FOR DISPLAYING CURRENT USER USERNAME
+
 function getUsernameFromLocalStorage() {
   const token = localStorage.getItem('token');
   if (token) {
@@ -29,6 +31,8 @@ document.addEventListener("DOMContentLoaded", function() {
   displayUsername();
 });
 
+
+//CREATE POST FUNCTION
 
 function postTextAreaValueToAPI(event) {
     event.preventDefault();
@@ -63,10 +67,15 @@ function postTextAreaValueToAPI(event) {
       });
 }
 
+
+//FUNCTION FOR CLEARING OUT TOKEN WHEN LOGGED-OUT
+
 function logOut(event) {
   window.location.href = "login.html";
   localStorage.clear();
 }
+
+//FUNCTION FOR GETTING USER POSTS 
 
 const token = localStorage.getItem('token');
 fetch('http://localhost:3000/api/v1/posts',{
@@ -103,7 +112,7 @@ fetch('http://localhost:3000/api/v1/posts',{
     // Create the post header text div and add it to the post header
     const postHeaderText = document.createElement('div');
     postHeaderText.classList.add('post-header-text');
-    postHeaderText.innerHTML = `<h3>${logged_username}</h3>`; // Assuming 'username' is a property of the post object
+    postHeaderText.innerHTML = `<h3>${post.postedBy}</h3>`; // Assuming 'username' is a property of the post object
     postHeader.appendChild(postHeaderText);
 
     // Create the post header description div and add it to the post header
@@ -128,3 +137,6 @@ fetch('http://localhost:3000/api/v1/posts',{
     postMainContainer.appendChild(postContainer);
   });
 });
+
+
+//FUNCTION FOR LIKES
