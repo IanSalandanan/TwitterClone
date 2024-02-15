@@ -30,7 +30,7 @@ function displayUsername(){
 // FUNCTION FOR CLEARING OUT TOKEN WHEN LOGGED-OUT ------------------------------------------------------------------------------------------------------------
 function logOut() {
   window.location.href = "login.html";
-  localStorage.clear();
+  localStorage.removeItem("token");
 }
 
 // FUNCTION FOR GETTING USER POSTS ----------------------------------------------------------------------------------------------------------------------------

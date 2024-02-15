@@ -58,26 +58,36 @@ document.addEventListener("DOMContentLoaded", function() {
     .then((data) => {
         // Select the parent element where you want to append the username containers
         const userListContainer = document.querySelector('.suggest-users-container');
-  
-        // Iterate through the list of usernames and create a div container for each user
-        data.forEach((username) => {
-            // Create a new div element for the username container
-            const usernameContainer = document.createElement('div');
-            usernameContainer.classList.add('suggest-usernames');
-  
-            // Set the inner HTML of the username container to the username
-            usernameContainer.innerHTML = username;
-  
-            // Append the username container to the user list container
-            userListContainer.appendChild(usernameContainer);
-            
-            // Add event listener to each username element
-            usernameContainer.addEventListener('click', () => {
+        let usernamesAdded = 0;
+        //const followedUsers = getFollowing();
+
+        getFollowing().then((followedUsers) => { // Iterate through the list of usernames and create a div container for each user
+            data.forEach((username) => {   
+                
+                if (followedUsers.includes(username)){return;} //?!?!?!?! determine bat di nalang token === username
+                else if (username === logged_username){return;}
+                else if (usernamesAdded >= 3){return;}
+                
+                    // Create a new div element for the username container
+                const usernameContainer = document.createElement('div');
+                usernameContainer.classList.add('suggest-usernames');
+    
+                // Set the inner HTML of the username container to the username
+                usernameContainer.innerHTML = username;
+    
+                // Append the username container to the user list container
+                userListContainer.appendChild(usernameContainer);
+                
+                // Add event listener to each username element
+                usernameContainer.addEventListener('click', () => {
                 // Navigate to profile page with username as query parameter
                 window.location.href = `profile.html?username=${encodeURIComponent(username)}`;
+                });
+                    
+                usernamesAdded++;           
             });
+            console.log(data)
         });
-        console.log(data)
 
     })
     .catch((error) => {
@@ -105,6 +115,7 @@ async function getFollowing() {
 
         const data = await response.json();
         console.log('Following:', data); 
+        
 
         // Select the parent element where you want to append the username containers
         const followed_userListContainer = document.querySelector('.follow__structure');
@@ -138,13 +149,15 @@ async function getFollowing() {
             });
         });
 
+        return data;
+
     } catch (error) {
         console.error('Error fetching following:', error);
     }
 }
 
 // Call the function to fetch the list of following users
-getFollowing();
+//getFollowing();
 
 
 // connected sya sa profle - para ma-change yung profile name at username kay suggested user
@@ -168,3 +181,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+function logOut(event) {
+    window.location.href = "login.html";
+    localStorage.removeItem("token");
+  }

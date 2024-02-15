@@ -153,12 +153,12 @@ async function unfollowUser(usernameToUnfollow) {
 
 // Update follow/unfollow status in local storage
 async function updateFollowStatusInLocalStorage(username, status) {
-  localStorage.setItem(`followStatus_${username}`, status);
+  const followStatus = localStorage.setItem(`loggedUser_${logged_username} followStatus_${username}`, status);
 }
 
 // Get follow/unfollow status from local storage
 function getFollowStatusFromLocalStorage(username) {
-  return localStorage.getItem(`followStatus_${username}`);
+  return localStorage.getItem(`loggedUser_${logged_username} followStatus_${username}`);
 }
 
 // Function to toggle follow/unfollow status
@@ -200,10 +200,6 @@ document.addEventListener("DOMContentLoaded", async function () {
   }
 });
 
-function logOut(event) {
-  window.location.href = "login.html";
-  localStorage.clear();
-}
 
 //FUNCTION FOR GETTING USER POSTS
 const token = localStorage.getItem("token");
@@ -264,3 +260,8 @@ fetch("http://localhost:3000/api/v1/posts", {
       tweetContainer.appendChild(tweetDiv);
     });
   });
+
+  function logOut(event) {
+    window.location.href = "login.html";
+    localStorage.removeItem("token");
+  }
