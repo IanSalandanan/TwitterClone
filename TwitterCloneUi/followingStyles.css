@@ -202,8 +202,6 @@ a {
     flex: 1;
     padding: 10px;
     max-width: 500px;
-    /* background-color: blueviolet; */
-
  
 }
 
@@ -254,38 +252,50 @@ a {
 .suggest-users-container {
     flex: 0.2;
     min-width: 230px;
-    margin-top: 10px;
+    margin-top: 1.3rem;
+
     margin-left: 30px;
     padding-left: 20px;
     padding-right: 20px;
-    height: 30vh;
-    
-    margin-top: 1.3rem;
+    height: 40vh;
+
     background-color: rgba(240, 240, 240, 0.2);
     backdrop-filter: blur(10px);
     box-shadow: 0 4px 6px rgb(1, 1, 1, 0.1);
     border-radius: 20px;
+   
+}
+
+.suggest-header {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    margin-left: 1rem;
+    text-align: center;
+
 }
 
 .suggest-usernames{
     margin-left: 20px;
-    margin-bottom: 7px;
-    display: flex;
-    align-items: center;
+    text-align: center;
+
     cursor:pointer;
+
+    border-bottom: 1px solid gray;
+    color: black;
+    transition: all 300ms ease-in-out;
  
 }
 
-.widget-header {
-    display: flex;
-    justify-content: center;
-    padding: 10px;
-
-    font-family: poppins;
-    margin-bottom: 5rem;
-    margin-top: 1rem;
-    margin-left: 1rem;
+.suggest-usernames:hover{
+    background: rgba(18, 18, 18, 0.7);
+    color:transparent;
+    color: white;
 }
+
+
 
 .widget-text {
     margin-left: 20px;
