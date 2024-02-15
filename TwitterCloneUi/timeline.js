@@ -72,7 +72,7 @@ function postTextAreaValueToAPI(event) {
 
 function logOut(event) {
   window.location.href = "login.html";
-  localStorage.clear();
+  localStorage.removeItem("token");
 }
 
 //FUNCTION FOR GETTING USER POSTS 

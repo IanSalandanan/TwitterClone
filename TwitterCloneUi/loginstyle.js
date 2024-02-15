@@ -1,4 +1,5 @@
-localStorage.clear();
+
+localStorage.removeItem("token");
 
 function regisPass() {
     const username = document.getElementById('username-regis').value;
