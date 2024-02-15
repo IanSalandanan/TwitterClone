@@ -44,7 +44,7 @@
             <span class="material-symbols-outlined">
                 logout
             </span>
-            <h2 onclick="logOut(event)">Log Out</h2>
+            <h2 onclick="logOut()">Log Out</h2>
         </div>
 
         <div id="profile-link-container">
@@ -68,7 +68,7 @@
                 <form>
                     <div class="post-field-input">
                         <textarea id="text-area" maxlength="280" placeholder="What's Happening?"></textarea>
-                        <button type="submit" id="post-button" onclick="postTextAreaValueToAPI(event)">Post</button>
+                        <button type="submit" id="post-button" onclick="postTextAreaValueToAPI(event); GetPosts();">Post</button>
                     </div>
                 </form>
             </div>
@@ -76,37 +76,7 @@
 
         </div>
 
-        <div class="post-main-container">
-            
-            <!--POST TIMELINE-->
-        <div class="post-container">
-            
-            <div class="post-avatar">
-                <span class="material-symbols-outlined"> account_circle </span>
-            </div>
-
-            <div class="post-body">
-                <div class="post-header">
-                    <div class="post-header-text">
-                        <h3>
-                            Aya 
-                        </h3>
-                    </div>
-                    <div class="post-header-description">
-                        <p>Hello there, I am Aya, the official bot of Oasis. </p>
-                    </div>
-                </div>
-
-                <div class="post-footer">
-                    <span class="material-symbols-outlined"> favorite </span>
-                </div>
-            </div>
-        </div>
-
-       
-        <!--POST TIMELINE-->
-
-        </div>
+        <div class="post-main-container"></div>
 
     </div>
 
@@ -116,24 +86,6 @@
     <div class="widgets-container">
         <div class="widget-header">
             <h2>Trending Now</h2>
-        </div>
-        <div class="widget-text">
-            <h2>#WebDev</h2>
-        </div>
-        <div class="widget-text">
-            <h2>#IT114L</h2>
-        </div>
-        <div class="widget-text">
-            <h2>#GoodJobTho</h2>
-        </div>
-        <div class="widget-text">
-            <h2>#UnoPls</h2>
-        </div>
-        <div class="widget-text">
-            <h2>#Freelancing</h2>
-        </div>
-        <div class="widget-text">
-            <h2>#BSITambay</h2>
         </div>
     </div>
     <!--WIDGET MENU-->
