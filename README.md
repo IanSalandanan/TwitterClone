@@ -9,16 +9,18 @@ ___
 
 - The approach that we did for our website is a multi-page html, javascript, and css per section so that we can have our own coding style implemented. Simplistic approach were also implemented so we can be comfortable in focusing on the backend side. 
 
+- We made our website creative by exploring themes and designs that are appealing, yet pleasing to the eyes while having a smooth experience. We used the "glass morphism" theme, showcasing translucent and window-like elements to create a sense of depth and realism, mimicking the appearance of an acrylic or frosted glass. With this, this showcases an appealing visual aesthetic, engaging user experience, and incorporating modern trends.
+
 - We used netlify to deploy our website.
 
 ### How we worked as a team to accomplish the project?
+
 - Our project was divided in four sections, which are the Log In & Registration Page, Timeline Page, Profile Page & Following Page. These sections were the ones that gave us a role on which to make in our website. As we work on the tasks, we made sure to help each other for a better outcome and collaboration. For the roles and responsibilities, we aimed to have a fair amount of tasks per person. For the API, we all did some contributions and helped each other. For the CSS, we learn from each other's own and unique styles. 
 
 - Through great communication, we easily prevented conflicts in changes of codes with each other. We kept each other updated for every push or changes that we did on our codes, no matter how big or small the changes are. By using a multi-page html, this also prevented us from having code changes conflicts.
 
 ### How could we improve our website in the future?
 
-- We could improve our website even more by learning the advanced syntaxs of JavaScript, as we had quite some trouble in using the APIs. Overall, a few more practice and knowledge would definitely help us in improving our future works.
 - We could improve our website even more by learning the advanced syntaxes of JavaScript, as we had quite some trouble in using the APIs. Overall, a few more practice and knowledge would definitely help us in improving our future works. 
 
 
