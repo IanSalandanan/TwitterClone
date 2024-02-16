@@ -56,12 +56,21 @@ async function fetchPosts() {
     const postMainContainer = document.querySelector('.post-main-container');
 
     posts.forEach(function (post) {
+
+      const dateObj = new Date(post.dateTimePosted);
+
+      const month = dateObj.toLocaleString("en-US", { month: "long" });
+      const day = dateObj.getDate(); 
+      const year = dateObj.getFullYear();
+
+      const formattedDate = `${month} ${day}, ${year}`;
+
       const postContainer = document.createElement('div');
       postContainer.classList.add('post-container');
 
       const postAvatar = document.createElement('div');
       postAvatar.classList.add('post-avatar');
-      postAvatar.innerHTML = '<span class="material-symbols-outlined"> account_circle </span>';
+      postAvatar.innerHTML = '<img src="./assets/catdp1.avif" alt="Profile" id="profile-pic2">';
       postContainer.appendChild(postAvatar);
 
       const postBody = document.createElement('div');
@@ -72,7 +81,7 @@ async function fetchPosts() {
 
       const postHeaderText = document.createElement('div');
       postHeaderText.classList.add('post-header-text');
-      postHeaderText.innerHTML = `<h3 class="post-username">${post.postedBy}</h3>`;
+      postHeaderText.innerHTML = `<h3 class="post-username">${post.postedBy}</h3> <p class="post-date">${formattedDate}</p>`;
       postHeader.appendChild(postHeaderText);
 
       const postHeaderDescription = document.createElement('div');
@@ -84,7 +93,7 @@ async function fetchPosts() {
 
       const postFooter = document.createElement('div');
       postFooter.classList.add('post-footer');
-      postFooter.innerHTML = '<span class="material-symbols-outlined" onclick="getLikes(event)"> favorite </span>';
+      postFooter.innerHTML = '<p class="like-text">Like &nbsp;</p><span class="material-symbols-outlined" onclick="getLikes(event)"> favorite </span>';
       postBody.appendChild(postFooter);
 
       postContainer.appendChild(postBody);
@@ -236,7 +245,7 @@ async function GetTrends() {
       const count = hashtagsCounts[hashtag];
       const widgetText = document.createElement("div");
       widgetText.classList.add("widget-text");
-      widgetText.innerHTML = `<p>${hashtag}   (${count})</p>`;
+      widgetText.innerHTML = `<strong>${hashtag}</strong><p>(${count} Posts)</p>`;
       widgetsContainer.appendChild(widgetText);
     }
 
