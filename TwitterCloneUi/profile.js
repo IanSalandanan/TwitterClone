@@ -202,18 +202,19 @@ async function fetchProfilePost() {
       .then(function (posts) {
         const tweetContainer = document.querySelector(".twatter-profile-feed");
 
-        if (followButton.textContent === "Follow") {
+        if (followButton && followButton.textContent === "Follow") {
           const messageElement = document.createElement("div");
           messageElement.classList.add("twatter-profile-feedContainerEmpty");
           messageElement.textContent = "Follow this user to see their posts";
           tweetContainer.appendChild(messageElement);
+          return;
         }
 
         posts.forEach(function (post) {
           if (suggestedUsername && post.postedBy === suggestedUsername) {
             const tweetDiv = createTweetElement(post);
             tweetContainer.appendChild(tweetDiv);
-          } else if (!suggestedUsername && post.postedBy === logged_username) {
+          } else if (logged_username && post.postedBy === logged_username) {
             const tweetDiv = createTweetElement(post);
             tweetContainer.appendChild(tweetDiv);
           }
@@ -252,7 +253,6 @@ async function fetchProfilePost() {
                               <span class="material-symbols-outlined"> favorite </span>
                             </button>`;
       contentDiv.appendChild(heartDiv);
-
       tweetDiv.appendChild(contentDiv);
 
       return tweetDiv;
