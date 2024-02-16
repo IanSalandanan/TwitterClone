@@ -175,6 +175,10 @@ function followUnfollow_initial() {
   }
 }
 
+function refreshProfilePage() {
+  window.location.reload(true); // Reloads the page from the server, ignoring the cache
+}
+
 //FUNCTION FOR GETTING USER POSTS
 document.addEventListener("DOMContentLoaded", function() {
   const token = localStorage.getItem("token");
