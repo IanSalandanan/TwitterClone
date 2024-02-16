@@ -1,5 +1,3 @@
-
-
 // DISPLAY USERNAME IN NAV
 function getUsernameFromLocalStorage() {
   const token = localStorage.getItem("token");
@@ -40,10 +38,9 @@ function getQueryParam(name) {
   return urlParams.get(name);
 }
 
-
 // ito yung pagtanggal kay follow button kapag nasa profile ni logged in user
 
-function displayFollowBtn(){
+function displayFollowBtn() {
   // Read the username from the URL parameter
   const urlParams = new URLSearchParams(window.location.search);
   const URLusername = urlParams.get("username");
@@ -61,7 +58,6 @@ function displayFollowBtn(){
     followButtonContainer.appendChild(followButton);
   }
 }
-
 
 //follow button to following
 async function followUser(usernameToFollow) {
@@ -123,11 +119,16 @@ async function unfollowUser(usernameToUnfollow) {
 //FOLLOW OR UNFOLLOW MECHANISM
 
 async function updateFollowStatusInLocalStorage(username, status) {
-  const followStatus = localStorage.setItem(`loggedUser_${logged_username} followStatus_${username}`, status);
+  const followStatus = localStorage.setItem(
+    `loggedUser_${logged_username} followStatus_${username}`,
+    status
+  );
 }
 
 function getFollowStatusFromLocalStorage(username) {
-  return localStorage.getItem(`loggedUser_${logged_username} followStatus_${username}`);
+  return localStorage.getItem(
+    `loggedUser_${logged_username} followStatus_${username}`
+  );
 }
 
 // Function to toggle follow/unfollow status
@@ -162,7 +163,7 @@ async function followUnfollow(classID) {
   }
 }
 
-function followUnfollow_initial(){
+function followUnfollow_initial() {
   const followButton = document.querySelector(".follow-btn-1");
   const username = getQueryParam("username");
   const initialStatus = getFollowStatusFromLocalStorage(username);
@@ -175,66 +176,84 @@ function followUnfollow_initial(){
 }
 
 //FUNCTION FOR GETTING USER POSTS
-async function fetchProfilePost(){
+document.addEventListener("DOMContentLoaded", function() {
   const token = localStorage.getItem("token");
-fetch("http://localhost:3000/api/v1/posts", {
-  method: "GET",
-  headers: {
-    Authorization: `Bearer ${token}`,
-    Accept: "application/json",
-  },
-})
-  .then(function (response) {
-    return response.json();
+  const loggedInUsername = localStorage.getItem("username"); // Retrieve the logged-in username
+  const urlParams = new URLSearchParams(window.location.search);
+  const suggestedUsername = urlParams.get("username"); // Retrieve the suggested username from the URL query parameters
+
+  const tweetContainer = document.querySelector(".twatter-profile-feed");
+
+  fetch("http://localhost:3000/api/v1/posts", {
+      method: "GET",
+      headers: {
+          Authorization: `Bearer ${token}`,
+          Accept: "application/json",
+      },
   })
-  .then(function (posts) {
-    // Assuming 'posts' is an array of post objects received from the API
-    const tweetContainer = document.querySelector(".twatter-profile-feed");
+  .then(function(response) {
+      return response.json();
+  })
+  .then(function(posts) {
+    const followed_userListContainer = document.querySelector('.twatter-profile-feed');
 
-    posts.forEach(function (post) {
-      // Create the tweet container div
-      const tweetDiv = document.createElement("div");
-      tweetDiv.classList.add("twatter-profile-tweet");
+      posts.forEach(function(post) {
+          if (suggestedUsername && post.postedBy === suggestedUsername) {
+              const tweetDiv = createTweetElement(post);
+              tweetContainer.appendChild(tweetDiv);
+          } else if (!suggestedUsername && post.postedBy === logged_username) {
+              const tweetDiv = createTweetElement(post);
+              tweetContainer.appendChild(tweetDiv);
+          }
+      });
+      
+      if (!tweetContainer.children.length) {
+          const messageElement = document.createElement("div");
+          messageElement.classList.add("twatter-profile-feedContainerEmpty");
+          messageElement.textContent = "Follow this user to see their posts";
+          tweetContainer.appendChild(messageElement);
+      }
+  })
+  .catch(function(error) {
+      console.error('Error fetching posts:', error);
+  });
 
-      // Create the tweet avatar div and add it to the tweet container
-      const avatarDiv = document.createElement("div");
-      avatarDiv.classList.add("follow__avatar");
-      avatarDiv.innerHTML =
-        '<span class="tweet-prof-avatar material-symbols-outlined">account_circle</span>';
-      tweetDiv.appendChild(avatarDiv);
+  function createTweetElement(post) {
+    const tweetDiv = document.createElement("div");
+    tweetDiv.classList.add("twatter-profile-tweet");
 
-      // Create the tweet content div and add it to the tweet container
-      const contentDiv = document.createElement("div");
-      contentDiv.classList.add("tweet-content");
+    const avatarDiv = document.createElement("div");
+    avatarDiv.classList.add("follow__avatar");
+    avatarDiv.innerHTML =
+      '<span class="tweet-prof-avatar material-symbols-outlined">account_circle</span>';
+    tweetDiv.appendChild(avatarDiv);
 
-      // Create the tweet content details div and add it to the tweet content
-      const detailsDiv = document.createElement("div");
-      detailsDiv.classList.add("tweet-content-details");
-      detailsDiv.innerHTML = `<h4 class="tweet-name tweet-profile-name">${post.postedBy}</h4>`;
-      contentDiv.appendChild(detailsDiv);
+    const contentDiv = document.createElement("div");
+    contentDiv.classList.add("tweet-content");
 
-      // Create the tweet content container div and add it to the tweet content
-      const textDiv = document.createElement("div");
-      textDiv.classList.add("tweet-content-container");
-      textDiv.innerHTML = `<p class="tweet-text">${post.content}</p>`;
-      contentDiv.appendChild(textDiv);
+    const detailsDiv = document.createElement("div");
+    detailsDiv.classList.add("tweet-content-details");
+    detailsDiv.innerHTML = `<h4 class="tweet-name tweet-profile-name">${post.postedBy}</h4>`;
+    contentDiv.appendChild(detailsDiv);
 
-      // Create the tweet heart container div and add it to the tweet content
-      const heartDiv = document.createElement("div");
-      heartDiv.classList.add("twatter-heart-container");
-      heartDiv.innerHTML = `<button class="heart-button" onclick="toggleLike(this)">
+    const textDiv = document.createElement("div");
+    textDiv.classList.add("tweet-content-container");
+    textDiv.innerHTML = `<p class="tweet-text">${post.content}</p>`;
+    contentDiv.appendChild(textDiv);
+
+    const heartDiv = document.createElement("div");
+    heartDiv.classList.add("twatter-heart-container");
+    heartDiv.innerHTML = `<button class="heart-button" onclick="toggleLike(this)">
                             <span class="material-symbols-outlined"> favorite </span>
                           </button>`;
-      contentDiv.appendChild(heartDiv);
+    contentDiv.appendChild(heartDiv);
 
-      // Add the tweet content to the tweet container
-      tweetDiv.appendChild(contentDiv);
+    tweetDiv.appendChild(contentDiv);
 
-      // Add the tweet container to the tweet main container
-      tweetContainer.appendChild(tweetDiv);
-    });
-  });
-}
+    return tweetDiv;
+  }
+});
+
 
 // connected siya kay following - para ma-change yung profile name at username kay suggested user & followed user
 document.addEventListener("DOMContentLoaded", function () {
@@ -261,9 +280,84 @@ document.addEventListener("DOMContentLoaded", function () {
 
 document.addEventListener("DOMContentLoaded", fetchProfilePost());
 
-
 function logOut(event) {
   window.location.href = "login.html";
   localStorage.removeItem("token");
 }
 
+async function getLikes(event) {
+  try {
+    const postContainer = event.target.closest(".twatter-profile-tweet");
+    const content = postContainer.querySelector(".tweet-text").textContent;
+    const poster = postContainer.querySelector(".tweet-profile-name").innerText;
+
+    const token = localStorage.getItem("token"); // Get the token from localStorage
+
+    const requestUrl = "http://localhost:3000/api/v1/posts";
+    const requestMethod = {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        Accept: "application/json",
+      },
+    };
+
+    const response = await fetch(requestUrl, requestMethod);
+
+    if (!response.ok) {
+      throw new Error(`API request failed with status: ${response.status}`);
+    }
+
+    const posts = await response.json();
+
+    posts.forEach((post) => {
+      if (post.postedBy === poster && post.content === content) {
+        console.log(post.postId);
+        patchLikeId(post.postId, token);
+      }
+    });
+  } catch (error) {
+    console.error(`Error fetching likes: ${error}`);
+  }
+}
+
+async function patchLikeId(postId, token) {
+  try {
+    const requestUrl = `http://localhost:3000/api/v1/posts/${postId}`;
+    const requestMethod = {
+      method: "PATCH",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        action: "like",
+      }),
+    };
+
+    await fetch(requestUrl, requestMethod);
+  } catch (error) {
+    console.error(`Error fetching likes: ${error}`);
+  }
+}
+
+async function toggleLike(button) {
+  try {
+    // Check if the button is already liked
+    const isLiked = button.dataset.liked === "true";
+
+    if (isLiked) {
+      // Unlike the post
+      // Code to remove like data goes here
+      button.style.color = ""; // Reset the color to default
+      button.dataset.liked = "false"; // Update the dataset to reflect unliking
+    } else {
+      // Like the post
+      await getLikes(event);
+      button.style.color = "red"; // Change the color to indicate liking
+      button.dataset.liked = "true"; // Update the dataset to reflect liking
+    }
+  } catch (error) {
+    console.error(`Error toggling like: ${error}`);
+  }
+}
