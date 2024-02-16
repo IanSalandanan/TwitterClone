@@ -22,10 +22,10 @@ body {
 #loginORsignup {
     display: none;
     position: relative;
-    top: 28%;
+    top: 30%;
     left: 40%;
-    width: 350px;
-    height: 350px; /* Adjusted height to match width for a circular shape */
+    width: 320px;
+    height: 320px; /* Adjusted height to match width for a circular shape */
     background: black;
     background-image: url(./assets/sonata.gif);
     backdrop-filter: blur(15px);
@@ -33,20 +33,22 @@ body {
     border-radius: 50%; /* Set border-radius to 50% to make it a circle */
     z-index: 2;
     transition: left 0.5s, top 0.5s;
+    cursor: pointer;
 }
 
 #oasisbtn {
     display: flex;
     position: absolute;
-    top: 28%;
+    top: 30%;
     left: 40%;
-    width: 350px; /* Adjust the width and height to match the smaller dimension */
-    height: 350px; /* Adjust the width and height to match the smaller dimension */
+    width: 320px; /* Adjust the width and height to match the smaller dimension */
+    height: 320px; /* Adjust the width and height to match the smaller dimension */
     background: black;
     background-image: url(./assets/sonata.gif);
     background-position: center;
     border-radius: 50%; /* Set border-radius to 50% to make it a circle */
     z-index: 2;
+    cursor: pointer;
 }
 
 #login-box{
