@@ -229,10 +229,16 @@ async function fetchProfilePost() {
       const tweetDiv = document.createElement("div");
       tweetDiv.classList.add("twatter-profile-tweet");
 
+      //pink color 
       const avatarDiv = document.createElement("div");
       avatarDiv.classList.add("follow__avatar");
-      avatarDiv.innerHTML =
-        '<span class="tweet-prof-avatar material-symbols-outlined">account_circle</span>';
+
+      const imgElement = document.createElement("img");
+      imgElement.src = "./assets/catdp1.avif";
+      imgElement.alt = "Profile Icon";
+      imgElement.classList.add("profile-feed-icon", "profile-feed-icon-2"); // Add custom-size class for sizing
+
+      avatarDiv.appendChild(imgElement);
       tweetDiv.appendChild(avatarDiv);
 
       const contentDiv = document.createElement("div");
@@ -346,7 +352,7 @@ async function toggleLike(button) {
     } else {
       // Like the post
       await getLikes(event);
-      button.style.color = "red"; // Change the color to indicate liking
+      button.style.color = "pink"; // Change the color to indicate liking
       button.dataset.liked = "true"; // Update the dataset to reflect liking
     }
   } catch (error) {

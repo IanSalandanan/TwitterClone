@@ -517,15 +517,15 @@ button {
 /*HEART BUTTON TRANSITION*/
 
 .heart-button:hover .material-symbols-outlined {
-  color: white;
+  color: pink;
 }
 
 .heart-button.liked .material-symbols-outlined {
-  color: red;
+  color: pink;
 }
 
 .heart-button.liked .button-text {
-  color: red;
+  color: pink;
 }
 
 .heart-button {
