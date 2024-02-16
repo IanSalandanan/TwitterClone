@@ -1,3 +1,5 @@
+
+
 // Function to retrieve username from localStorage
 function getUsernameFromLocalStorage() {
     const token = localStorage.getItem('token');
@@ -10,19 +12,13 @@ function getUsernameFromLocalStorage() {
 
 var logged_username = getUsernameFromLocalStorage();
 
-function displayUsername(){
+function displayNavUsername(){
 
     //validation
     if (logged_username) {
         console.log("Username retrieved from localStorage:", logged_username);
     } else {
         console.log("No username found in localStorage.");
-    }
-
-    //display username of logged user
-    const usernameElement = document.getElementById('user__headerText');
-    if (usernameElement !== null){
-        usernameElement.innerHTML = `<h3>${logged_username}</h3>`; 
     }
 
     //display username of logged user in navbar
@@ -32,14 +28,15 @@ function displayUsername(){
     }
 }
 
-document.addEventListener("DOMContentLoaded", function() {
-    displayUsername();
-});
+function displayHeaderUsername(){
+    //display username of logged user in folllowing page header
+    const usernameElement = document.getElementById('user__headerText');
+    if (usernameElement !== null){
+        usernameElement.innerHTML = `<h3>${logged_username}</h3>`; 
+    }
+}
 
-
-//dynamically display all users
-document.addEventListener("DOMContentLoaded", function() {
-
+function displayUsersToFollow(){
     const token = localStorage.getItem('token');
   
     fetch('http://localhost:3000/api/v1/users/', {
@@ -54,14 +51,19 @@ document.addEventListener("DOMContentLoaded", function() {
             throw new Error(`API request failed with status ${response.status}`);
         }
         return response.json();
+        
     })
     .then((data) => {
         // Select the parent element where you want to append the username containers
         const userListContainer = document.querySelector('.suggest-users-container');
+    
         let usernamesAdded = 0;
         //const followedUsers = getFollowing();
 
-        getFollowing().then((followedUsers) => { // Iterate through the list of usernames and create a div container for each user
+        getFollowing().then((followedUsers) => { 
+
+            if (!followedUsers || followedUsers.length === 0){console.log("list is empty, gawan mo na ng display"); }
+            // Iterate through the list of usernames and create a div container for each user
             data.forEach((username) => {   
                 
                 if (followedUsers.includes(username)){return;} //?!?!?!?! determine bat di nalang token === username
@@ -87,14 +89,14 @@ document.addEventListener("DOMContentLoaded", function() {
                 usernamesAdded++;           
             });
             console.log(data)
+            
         });
-
     })
     .catch((error) => {
         console.error("Error fetching from API:", error);
     });
-});
 
+}
 
 //get list of followed users
 async function getFollowing() {
@@ -114,8 +116,7 @@ async function getFollowing() {
         }
 
         const data = await response.json();
-        console.log('Following:', data); 
-        
+        console.log('Following:', data);       
 
         // Select the parent element where you want to append the username containers
         const followed_userListContainer = document.querySelector('.follow__structure');
@@ -148,7 +149,6 @@ async function getFollowing() {
                 window.location.href = `profile.html?username=${encodeURIComponent(username)}`;
             });
         });
-
         return data;
 
     } catch (error) {
@@ -156,13 +156,8 @@ async function getFollowing() {
     }
 }
 
-// Call the function to fetch the list of following users
-//getFollowing();
-
-
 // connected sya sa profle - para ma-change yung profile name at username kay suggested user
-
-document.addEventListener("DOMContentLoaded", function () {
+function addSuggestedUserClickListeners() {
     const suggestedUserLinks = document.querySelectorAll('.suggested-user');
     suggestedUserLinks.forEach(function (userLink) {
         userLink.addEventListener('click', function(event) {
@@ -178,10 +173,22 @@ document.addEventListener("DOMContentLoaded", function () {
         url.searchParams.set(key, value);
         window.history.pushState({}, '', url);
     }
+}
+
+//When DOM is fully loaded
+document.addEventListener("DOMContentLoaded", function() {
+    displayUsersToFollow();
+    displayNavUsername();
+    displayHeaderUsername();   
+    addSuggestedUserClickListeners();
 });
 
+// function refreshFollowingPage() {
+//     window.location.reload(true); // Reloads the page from the server, ignoring the cache
+// }
 
 function logOut(event) {
     window.location.href = "login.html";
     localStorage.removeItem("token");
   }
+

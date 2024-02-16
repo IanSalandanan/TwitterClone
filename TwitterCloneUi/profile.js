@@ -1,7 +1,4 @@
-/**HEART BUTTON TRANSITION FUNCTION**/
-function toggleLike(button) {
-  button.classList.toggle("liked");
-}
+
 
 // DISPLAY USERNAME IN NAV
 function getUsernameFromLocalStorage() {
@@ -16,7 +13,7 @@ function getUsernameFromLocalStorage() {
 
 var logged_username = getUsernameFromLocalStorage();
 
-function displayUsername() {
+function displayNavUsername() {
   if (logged_username) {
     console.log("Logged in username (localStorage):", logged_username);
   } else {
@@ -29,11 +26,7 @@ function displayUsername() {
   }
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-  displayUsername();
-});
-
-// FUNCTION TO DISPLAY USERNAME INSIDE THE TWEET
+//DISPLAY USERNAME INSIDE THE TWEET
 function displayTweetUsername() {
   const tweetUsernameElement = document.getElementById("user-tweet-username");
   if (tweetUsernameElement !== null) {
@@ -41,45 +34,22 @@ function displayTweetUsername() {
   }
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-  displayTweetUsername();
-});
-
-// Function to parse URL query parameters (to get username to follow)
+// Function to parse URL query parameters (to get username to follow and unfollow)
 function getQueryParam(name) {
   const urlParams = new URLSearchParams(window.location.search);
   return urlParams.get(name);
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-  // Get the username from the URL query parameter
-  const username = getQueryParam("username");
-  const usernameElement = document.getElementById("profile-username");
-  usernameElement.innerHTML = `<span>${logged_username}</span>`;
-});
-
-// connected siya kay following - para ma-change yung profile name at username kay suggested user
-
-document.addEventListener("DOMContentLoaded", function () {
-  const urlParams = new URLSearchParams(window.location.search);
-  let username = urlParams.get("username");
-
-  if (!username) {
-    username = logged_username;
-  }
-  const profileUsernameElement = document.getElementById("profile-username");
-  profileUsernameElement.textContent = username;
-});
 
 // ito yung pagtanggal kay follow button kapag nasa profile ni logged in user
 
-document.addEventListener("DOMContentLoaded", function () {
+function displayFollowBtn(){
   // Read the username from the URL parameter
   const urlParams = new URLSearchParams(window.location.search);
-  const username = urlParams.get("username");
+  const URLusername = urlParams.get("username");
 
   // Check if the username matches the username of the currently logged-in user
-  if (username && username !== logged_username) {
+  if (URLusername && URLusername !== logged_username) {
     const followButtonContainer = document.querySelector(".user-tab-4");
     const followButton = document.createElement("button");
     followButton.className = "follow-btn-1";
@@ -90,7 +60,8 @@ document.addEventListener("DOMContentLoaded", function () {
     };
     followButtonContainer.appendChild(followButton);
   }
-});
+}
+
 
 //follow button to following
 async function followUser(usernameToFollow) {
@@ -151,12 +122,10 @@ async function unfollowUser(usernameToUnfollow) {
 
 //FOLLOW OR UNFOLLOW MECHANISM
 
-// Update follow/unfollow status in local storage
 async function updateFollowStatusInLocalStorage(username, status) {
   const followStatus = localStorage.setItem(`loggedUser_${logged_username} followStatus_${username}`, status);
 }
 
-// Get follow/unfollow status from local storage
 function getFollowStatusFromLocalStorage(username) {
   return localStorage.getItem(`loggedUser_${logged_username} followStatus_${username}`);
 }
@@ -164,7 +133,13 @@ function getFollowStatusFromLocalStorage(username) {
 // Function to toggle follow/unfollow status
 async function toggleFollowStatus(username) {
   const currentStatus = getFollowStatusFromLocalStorage(username);
-  const newStatus = currentStatus === "followed" ? "unfollowed" : "followed";
+  let newStatus;
+
+  if (currentStatus === "followed") {
+    newStatus = "unfollowed";
+  } else {
+    newStatus = "followed";
+  }
   updateFollowStatusInLocalStorage(username, newStatus);
 }
 
@@ -187,8 +162,7 @@ async function followUnfollow(classID) {
   }
 }
 
-// Update button text based on initial follow/unfollow status
-document.addEventListener("DOMContentLoaded", async function () {
+function followUnfollow_initial(){
   const followButton = document.querySelector(".follow-btn-1");
   const username = getQueryParam("username");
   const initialStatus = getFollowStatusFromLocalStorage(username);
@@ -198,11 +172,13 @@ document.addEventListener("DOMContentLoaded", async function () {
   } else {
     followButton.textContent = "Follow";
   }
-});
+}
+
 
 
 //FUNCTION FOR GETTING USER POSTS
-const token = localStorage.getItem("token");
+async function fetchProfilePost(){
+  const token = localStorage.getItem("token");
 fetch("http://localhost:3000/api/v1/posts", {
   method: "GET",
   headers: {
@@ -260,8 +236,38 @@ fetch("http://localhost:3000/api/v1/posts", {
       tweetContainer.appendChild(tweetDiv);
     });
   });
+}
 
-  function logOut(event) {
-    window.location.href = "login.html";
-    localStorage.removeItem("token");
+// connected siya kay following - para ma-change yung profile name at username kay suggested user & followed user
+document.addEventListener("DOMContentLoaded", function () {
+  const urlParams = new URLSearchParams(window.location.search);
+  let username = urlParams.get("username");
+
+  if (!username) {
+    username = logged_username;
   }
+  const profileUsernameElement = document.getElementById("profile-username");
+  profileUsernameElement.textContent = username;
+});
+
+function refreshProfilePage() {
+  window.location.reload(true); // Reloads the page from the server, ignoring the cache
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  
+  displayNavUsername();
+  displayTweetUsername();
+  displayFollowBtn();
+  followUnfollow_initial();
+  fetchProfilePost();
+  
+
+});
+
+
+function logOut(event) {
+  window.location.href = "login.html";
+  localStorage.removeItem("token");
+}
+
