@@ -61,6 +61,12 @@ body {
   scrollbar-width: none;
 }
 
+.profile-icon-avatar{
+  width: 70px;
+  
+  border-radius: 50%;
+}
+
 .prof-nav {
   flex: 0.2;
   position: sticky;
