@@ -49,6 +49,7 @@ body {
 
 .profile-main-page {
   display: flex;
+  position: relative;
   margin-top: 1rem;
   flex: 0.2;
   min-width: fit-content;
@@ -62,6 +63,10 @@ body {
 
 .prof-nav {
   flex: 0.2;
+  position: sticky;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  top: 4px;
   height: 95vh;
   min-width: 210px;
   margin-top: 4px;
