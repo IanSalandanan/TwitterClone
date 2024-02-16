@@ -27,8 +27,10 @@ body {
     width: 320px;
     height: 320px; /* Adjusted height to match width for a circular shape */
     background: black;
-    background-image: url(./assets/save.jpg);
+    background-image: url(./assets/catdp1.avif);
     backdrop-filter: blur(15px);
+    transform: scaleY(-1);
+    transform: scaleX(-1);
     background-position: center;
     background-size: cover;
     border-radius: 50%; /* Set border-radius to 50% to make it a circle */
@@ -47,9 +49,16 @@ body {
     background-image: url(./assets/save.jpg);
     background-position: center;
     background-size: cover;
+    transform: scale(1);
+    transition: transform 0.5s ease;
     border-radius: 50%; /* Set border-radius to 50% to make it a circle */
     z-index: 2;
     cursor: pointer;
+}
+
+#oasisbtn:hover {
+    -webkit-box-shadow: 5px 5px 50px 5px grey; 
+    box-shadow: 5px 5px 50px 5px grey;
 }
 
 #login-box{
