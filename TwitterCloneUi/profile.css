@@ -197,6 +197,7 @@ a {
 .prof-nav-sect {
   flex-wrap: wrap;
   align-self: center;
+  margin-top: 1rem;
   margin-left: -10px; /*ADJUSTED - 12:28 PM - 2/12/24*/
 }
 
@@ -262,7 +263,7 @@ a {
   margin-left: 33px;
   padding-left: 20px;
   padding-right: 20px;
-  border-radius: 20px;
+  border-radius: 12px;
   background: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(10px);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -275,7 +276,7 @@ a {
 }
 
 .profile-banner-img {
-  margin-top: 10px;
+  margin-top: 20px;
   height: 200px;
   width: 780px;
   border-radius: 1rem;
