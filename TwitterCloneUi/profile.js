@@ -176,66 +176,69 @@ function followUnfollow_initial() {
 }
 
 //FUNCTION FOR GETTING USER POSTS
-async function fetchProfilePost() {
+document.addEventListener("DOMContentLoaded", function() {
   const token = localStorage.getItem("token");
+  //const loggedInUsername = localStorage.getItem("username"); // Retrieve the logged-in username
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const suggestedUsername = urlParams.get("username"); // Retrieve the suggested username from the URL query parameters
+
   fetch("http://localhost:3000/api/v1/posts", {
-    method: "GET",
-    headers: {
-      Authorization: `Bearer ${token}`,
-      Accept: "application/json",
-    },
+      method: "GET",
+      headers: {
+          Authorization: `Bearer ${token}`,
+          Accept: "application/json",
+      },
   })
-    .then(function (response) {
+  .then(function(response) {
       return response.json();
-    })
-    .then(function (posts) {
-      // Assuming 'posts' is an array of post objects received from the API
+  })
+  .then(function(posts) {
       const tweetContainer = document.querySelector(".twatter-profile-feed");
 
-      posts.forEach(function (post) {
-        // Create the tweet container div
-        const tweetDiv = document.createElement("div");
-        tweetDiv.classList.add("twatter-profile-tweet");
+      posts.forEach(function(post) {
+          if ((suggestedUsername && post.postedBy === suggestedUsername) || (!suggestedUsername && post.postedBy === logged_username)) {
+              const tweetDiv = createTweetElement(post);
+              tweetContainer.appendChild(tweetDiv);
+          }
+      });
+  });
 
-        // Create the tweet avatar div and add it to the tweet container
-        const avatarDiv = document.createElement("div");
-        avatarDiv.classList.add("follow__avatar");
-        avatarDiv.innerHTML =
-          '<span class="tweet-prof-avatar material-symbols-outlined">account_circle</span>';
-        tweetDiv.appendChild(avatarDiv);
+  function createTweetElement(post) {
+      const tweetDiv = document.createElement("div");
+      tweetDiv.classList.add("twatter-profile-tweet");
 
-        // Create the tweet content div and add it to the tweet container
-        const contentDiv = document.createElement("div");
-        contentDiv.classList.add("tweet-content");
+      const avatarDiv = document.createElement("div");
+    avatarDiv.classList.add("follow__avatar");
+    avatarDiv.innerHTML =
+      '<span class="tweet-prof-avatar material-symbols-outlined">account_circle</span>';
+    tweetDiv.appendChild(avatarDiv);
 
-        // Create the tweet content details div and add it to the tweet content
-        const detailsDiv = document.createElement("div");
-        detailsDiv.classList.add("tweet-content-details");
-        detailsDiv.innerHTML = `<h4 class="tweet-name tweet-profile-name">${post.postedBy}</h4>`;
-        contentDiv.appendChild(detailsDiv);
+    const contentDiv = document.createElement("div");
+    contentDiv.classList.add("tweet-content");
 
-        // Create the tweet content container div and add it to the tweet content
-        const textDiv = document.createElement("div");
-        textDiv.classList.add("tweet-content-container");
-        textDiv.innerHTML = `<p class="tweet-text">${post.content}</p>`;
-        contentDiv.appendChild(textDiv);
+    const detailsDiv = document.createElement("div");
+    detailsDiv.classList.add("tweet-content-details");
+    detailsDiv.innerHTML = `<h4 class="tweet-name tweet-profile-name">${post.postedBy}</h4>`;
+    contentDiv.appendChild(detailsDiv);
 
-        // Create the tweet heart container div and add it to the tweet content
-        const heartDiv = document.createElement("div");
-        heartDiv.classList.add("twatter-heart-container");
-        heartDiv.innerHTML = `<button class="heart-button" onclick="toggleLike(this)">
+    const textDiv = document.createElement("div");
+    textDiv.classList.add("tweet-content-container");
+    textDiv.innerHTML = `<p class="tweet-text">${post.content}</p>`;
+    contentDiv.appendChild(textDiv);
+
+    const heartDiv = document.createElement("div");
+    heartDiv.classList.add("twatter-heart-container");
+    heartDiv.innerHTML = `<button class="heart-button" onclick="toggleLike(this)">
                             <span class="material-symbols-outlined"> favorite </span>
                           </button>`;
-        contentDiv.appendChild(heartDiv);
+    contentDiv.appendChild(heartDiv);
 
-        // Add the tweet content to the tweet container
-        tweetDiv.appendChild(contentDiv);
+    tweetDiv.appendChild(contentDiv);
 
-        // Add the tweet container to the tweet main container
-        tweetContainer.appendChild(tweetDiv);
-      });
-    });
-}
+    return tweetDiv;
+  }
+});
 
 // connected siya kay following - para ma-change yung profile name at username kay suggested user & followed user
 document.addEventListener("DOMContentLoaded", function () {
