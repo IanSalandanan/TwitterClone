@@ -183,10 +183,8 @@ function followUnfollow_initial() {
 async function fetchProfilePost() {
   document.addEventListener("DOMContentLoaded", function () {
     const token = localStorage.getItem("token");
-    const loggedInUsername = localStorage.getItem("username"); // Retrieve the logged-in username
     const urlParams = new URLSearchParams(window.location.search);
     const suggestedUsername = urlParams.get("username"); // Retrieve the suggested username from the URL query parameters
-
     const followButton = document.querySelector(".follow-btn-1");
 
     fetch("http://localhost:3000/api/v1/posts", {
@@ -211,13 +209,16 @@ async function fetchProfilePost() {
         }
 
         posts.forEach(function (post) {
-          if (suggestedUsername && post.postedBy === suggestedUsername) {
+          if (!suggestedUsername && post.postedBy === logged_username) {
+            // Display the logged-in user's tweets in their profile page
             const tweetDiv = createTweetElement(post);
             tweetContainer.appendChild(tweetDiv);
-          } else if (logged_username && post.postedBy === logged_username) {
-            const tweetDiv = createTweetElement(post);
-            tweetContainer.appendChild(tweetDiv);
+          } else if (suggestedUsername && post.postedBy === suggestedUsername) {
+              // Display the suggested user's tweets in their profile page
+              const tweetDiv = createTweetElement(post);
+              tweetContainer.appendChild(tweetDiv);
           }
+          
         });
       })
       .catch(function (error) {
