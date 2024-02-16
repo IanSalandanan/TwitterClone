@@ -1,4 +1,3 @@
-
 localStorage.removeItem("token");
 
 function regisPass() {
@@ -88,7 +87,7 @@ function logSign(){
     } else {
         x.style.transform = 'scale(1)';
         y.style.transform = 'scale(0)';
-        z.style.left = '45%';
+        z.style.left = '40%';
     }
 }
 
