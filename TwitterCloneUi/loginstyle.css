@@ -16,7 +16,7 @@ body {
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(20px);
 }
 
 #loginORsignup {
@@ -27,13 +27,13 @@ body {
     width: 320px;
     height: 320px; /* Adjusted height to match width for a circular shape */
     background: black;
-    background-image: url(./assets/sonata.gif);
+    background-image: url(./assets/save.jpg);
     backdrop-filter: blur(15px);
     background-position: center;
+    background-size: cover;
     border-radius: 50%; /* Set border-radius to 50% to make it a circle */
     z-index: 2;
     transition: left 0.5s, top 0.5s;
-    cursor: pointer;
 }
 
 #oasisbtn {
@@ -44,8 +44,9 @@ body {
     width: 320px; /* Adjust the width and height to match the smaller dimension */
     height: 320px; /* Adjust the width and height to match the smaller dimension */
     background: black;
-    background-image: url(./assets/sonata.gif);
+    background-image: url(./assets/save.jpg);
     background-position: center;
+    background-size: cover;
     border-radius: 50%; /* Set border-radius to 50% to make it a circle */
     z-index: 2;
     cursor: pointer;
