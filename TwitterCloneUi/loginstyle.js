@@ -79,18 +79,32 @@ document.addEventListener("DOMContentLoaded", function () {
 function logSign(){
     let x = document.getElementById('login-box');
     let y = document.getElementById('signup-box');
+    let z = document.getElementById('loginORsignup');
 
     if (this.id === 'signup-btn') {
         x.style.transform = 'scale(0)';
         y.style.transform = 'scale(1)';
+        z.style.left = '35%';
     } else {
         x.style.transform = 'scale(1)';
         y.style.transform = 'scale(0)';
+        z.style.left = '45%';
     }
 }
 
+function start(){
+    let oasisstart = document.getElementById('oasisbtn');
+    let x = document.getElementById('login-box');
+    let z = document.getElementById('loginORsignup');
+    oasisstart.style.display = 'none';
+    x.style.transform='scale(1)';
+    z.style.display = 'block';
+}
+
+var startbtn = document.getElementById('oasisbtn');
 var signx = document.getElementById('signup-btn');
 var signy = document.getElementById('login-btn');
 
+startbtn.addEventListener('click', start);
 signx.addEventListener('click', logSign);
 signy.addEventListener('click', logSign);
