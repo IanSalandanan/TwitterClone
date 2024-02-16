@@ -33,7 +33,7 @@ body {
 }
 
 .sidebar {
-    background-color: rgba(240, 240, 240, 0.1);
+    background-color: rgba(240, 240, 240, 0.2);
     backdrop-filter: blur(10px);
     box-shadow: 0 4px 6px rgb(1, 1, 1, 0.1);
     border-radius: 12px;
@@ -51,13 +51,9 @@ body {
     font-size: 20px;
     margin-right: 20px;
     display: flex;
+    justify-content: center;
     align-items: center;
     cursor: pointer;
-}
-
-#profile-link-container .material-symbols-outlined {
-    padding: 20px;
-    font-size: 30px;
 }
 
 .sidebarOpt .material-symbols-outlined {
@@ -90,7 +86,7 @@ body {
 }
 
 .sidebarOpt {
-    border-radius: 25px;
+    border-radius: 1px;
     color: black;
     transition: all 300ms ease-in-out;
 }
@@ -106,6 +102,32 @@ a {
     color:transparent;
     color: white;
 }
+
+.greetings-container {
+  display: flex;
+  flex-direction: column;
+}
+
+#greetings-text {
+    font-family: poppins;
+    margin-left: 1.2rem;
+}
+
+#nav-user {
+    font-size: 17px;
+    font-family: poppins;
+    padding: 10px;
+}
+
+#profile-pic1 {
+    display: flex;
+    margin-left: 1.5rem;
+    width: 70px;
+    border-radius: 50%;
+    padding: 10px;
+}
+
+
 
 /*SIDEBAR MENU*/
 
@@ -184,7 +206,7 @@ a {
     border: none;
     color: black;
     font-weight: 900;
-    background-color: rgba(48, 48, 48, 0.1);
+    background-color: rgba(48, 48, 48, 0.2);
     width: 80px;
     height: 40px;
     border-radius: 20px;
@@ -240,10 +262,25 @@ a {
     color: rgb(156, 156, 156);
 }
 
+.post-header-text {
+    display: flex
+}
+
 .post-header-text h3 {
+    display: flex;
+    justify-content: flex-start;
     font-family: poppins;
     font-size: 15px;
     margin-bottom: 5px;
+}
+
+.post-header-text p{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.post-username {
+    width: 36rem;
 }
 
 .post-header-description {
@@ -257,7 +294,7 @@ a {
 }
 
 .post-avatar {
-    padding: 20px;
+    padding: 10px;
 }
 
 .post-footer .material-symbols-outlined {
@@ -267,6 +304,21 @@ a {
 
 .post-footer .material-symbols-outlined:hover {
     color:whitesmoke;
+}
+
+#profile-pic2 {
+    display: flex;
+    width: 70px;
+    border-radius: 50%;
+    padding: 8px;
+}
+
+.like-text {
+    font-size: 15px;
+}
+
+.post-date {
+    font-size: 13px;
 }
 
 
@@ -283,26 +335,33 @@ a {
     overflow: auto;
     
     margin-top: 1.3rem;
-    background-color: rgba(240, 240, 240, 0.1);
+    background-color: rgba(240, 240, 240, 0.2);
     backdrop-filter: blur(10px);
     box-shadow: 0 4px 6px rgb(1, 1, 1, 0.1);
     border-radius: 12px;
+}
+
+.widgets-container::-webkit-scrollbar {
+    display: none;
 }
 
 .widget-header {
     display: flex;
     justify-content: center;
     padding: 10px;
-
     font-family: poppins;
-    margin-bottom: 5rem;
+    margin-bottom: 3rem;
     margin-top: 1rem;
-    margin-left: 1rem;
+    border-bottom: solid 1px;
+}
+
+.widget-header h2 {
+    margin-left: 1.3rem;
 }
 
 .widget-text {
     font-family: poppins;
-    margin-left: 20px;
+    font-size: 20px;
     margin-bottom: 7px;
     display: flex;
     align-items: center;
@@ -311,7 +370,13 @@ a {
 
 .widget-text h2 {
     font-weight: 800;
-    font-size: 20px;
+    font-size: 30px;
     margin-right: 20px;
     font-family: poppins;
+}
+
+.widget-text {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5rem;
 }
