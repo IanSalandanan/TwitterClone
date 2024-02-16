@@ -62,8 +62,8 @@ body {
 }
 
 .profile-icon-avatar {
-  width: 70px;
-  height: 70px;
+  width: 55px;
+  height: 55px;
   border-radius: 50%;
   cursor: default;
 }
@@ -110,7 +110,7 @@ body {
 .nav-btn {
   transition: all 300ms ease;
   border: none;
-  border-radius: 30px;
+  border-radius: 10px;
   background-color: transparent;
   display: flex;
   padding: 1rem;
@@ -593,4 +593,9 @@ button {
   height: 130px;
   width: 130px;
   border-radius: 50%;
+}
+
+.profile-feed-icon-2 {
+  height: 50px;
+  width: 50px;
 }

@@ -166,11 +166,8 @@ async function followUnfollow(classID) {
 function followUnfollow_initial() {
   const followButton = document.querySelector(".follow-btn-1");
   const username = getQueryParam("username");
-
-  // Get the follow status from local storage
   const initialStatus = getFollowStatusFromLocalStorage(username);
 
-  // Set the initial text of the follow button based on the follow status
   if (initialStatus === "followed") {
     followButton.textContent = "Following";
   } else {
@@ -183,7 +180,7 @@ function refreshProfilePage() {
 }
 
 //FUNCTION FOR GETTING USER POSTS
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   const token = localStorage.getItem("token");
   const loggedInUsername = localStorage.getItem("username"); // Retrieve the logged-in username
   const urlParams = new URLSearchParams(window.location.search);
@@ -192,47 +189,60 @@ document.addEventListener("DOMContentLoaded", function() {
   const tweetContainer = document.querySelector(".twatter-profile-feed");
 
   fetch("http://localhost:3000/api/v1/posts", {
-      method: "GET",
-      headers: {
-          Authorization: `Bearer ${token}`,
-          Accept: "application/json",
-      },
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      Accept: "application/json",
+    },
   })
-  .then(function(response) {
+    .then(function (response) {
       return response.json();
-  })
-  .then(function(posts) {
-    const followed_userListContainer = document.querySelector('.twatter-profile-feed');
+    })
+    .then(function (posts) {
+      const followed_userListContainer = document.querySelector(
+        ".twatter-profile-feed"
+      );
 
-      posts.forEach(function(post) {
-          if (suggestedUsername && post.postedBy === suggestedUsername) {
-              const tweetDiv = createTweetElement(post);
-              tweetContainer.appendChild(tweetDiv);
-          } else if (!suggestedUsername && post.postedBy === logged_username) {
-              const tweetDiv = createTweetElement(post);
-              tweetContainer.appendChild(tweetDiv);
-          }
+      posts.forEach(function (post) {
+        if (suggestedUsername && post.postedBy === suggestedUsername) {
+          const tweetDiv = createTweetElement(post);
+          tweetContainer.appendChild(tweetDiv);
+        } else if (!suggestedUsername && post.postedBy === logged_username) {
+          const tweetDiv = createTweetElement(post);
+          tweetContainer.appendChild(tweetDiv);
+        }
       });
-      
+
       if (!tweetContainer.children.length) {
-          const messageElement = document.createElement("div");
-          messageElement.classList.add("twatter-profile-feedContainerEmpty");
-          messageElement.textContent = "Follow this user to see their posts";
-          tweetContainer.appendChild(messageElement);
+        const messageElement = document.createElement("div");
+        messageElement.classList.add("twatter-profile-feedContainerEmpty");
+        messageElement.textContent = "Follow this user to see their posts";
+        tweetContainer.appendChild(messageElement);
       }
-  })
-  .catch(function(error) {
-      console.error('Error fetching posts:', error);
-  });
+    })
+    .catch(function (error) {
+      console.error("Error fetching posts:", error);
+    });
 
   function createTweetElement(post) {
     const tweetDiv = document.createElement("div");
     tweetDiv.classList.add("twatter-profile-tweet");
 
+    // const avatarDiv = document.createElement("div");
+    // avatarDiv.classList.add("follow__avatar");
+    // avatarDiv.innerHTML =
+    //   '<span class="tweet-prof-avatar material-symbols-outlined">account_circle</span>';
+    // tweetDiv.appendChild(avatarDiv);
+
     const avatarDiv = document.createElement("div");
     avatarDiv.classList.add("follow__avatar");
-    avatarDiv.innerHTML =
-      '<span class="tweet-prof-avatar material-symbols-outlined">account_circle</span>';
+
+    const imgElement = document.createElement("img");
+    imgElement.src = "./assets/catdp1.avif";
+    imgElement.alt = "Profile Icon";
+    imgElement.classList.add("profile-feed-icon", "profile-feed-icon-2");
+
+    avatarDiv.appendChild(imgElement);
     tweetDiv.appendChild(avatarDiv);
 
     const contentDiv = document.createElement("div");
@@ -260,7 +270,6 @@ document.addEventListener("DOMContentLoaded", function() {
     return tweetDiv;
   }
 });
-
 
 // connected siya kay following - para ma-change yung profile name at username kay suggested user & followed user
 document.addEventListener("DOMContentLoaded", function () {
