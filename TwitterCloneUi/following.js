@@ -56,26 +56,36 @@ function displayUsersToFollow(){
     .then((data) => {
         // Select the parent element where you want to append the username containers
         const userListContainer = document.querySelector('.suggest-users-container');
-    
+
         let usernamesAdded = 0;
-        //const followedUsers = getFollowing();
 
         getFollowing().then((followedUsers) => { 
 
-            if (!followedUsers || followedUsers.length === 0){console.log("list is empty, gawan mo na ng display"); }
+            console.log("FOLLOWED:", followedUsers);
+            if (data.length-1 === followedUsers.length) {
+                console.log("Suggested users list is empty, displaying message."); 
+                const displayNoToFollowAccs = document.createElement('div');
+                displayNoToFollowAccs.classList.add('suggest-usernamesEmpty');
+                displayNoToFollowAccs.textContent = 'No available users to follow';
+                userListContainer.appendChild(displayNoToFollowAccs); 
+                return; // Exit the function since there are no users to display
+            }    
+                 
+            // If the data array is empty and there are followed users, display a message
+
             // Iterate through the list of usernames and create a div container for each user
-            data.forEach((username) => {   
+            data.forEach((username) => { 
                 
                 if (followedUsers.includes(username)){return;} //?!?!?!?! determine bat di nalang token === username
                 else if (username === logged_username){return;}
-                else if (usernamesAdded >= 3){return;}
+                else if (usernamesAdded >= 3){return;}             
                 
                     // Create a new div element for the username container
                 const usernameContainer = document.createElement('div');
                 usernameContainer.classList.add('suggest-usernames');
     
                 // Set the inner HTML of the username container to the username
-                usernameContainer.innerHTML = username;
+                usernameContainer.textContent = username;
     
                 // Append the username container to the user list container
                 userListContainer.appendChild(usernameContainer);
@@ -86,9 +96,10 @@ function displayUsersToFollow(){
                 window.location.href = `profile.html?username=${encodeURIComponent(username)}`;
                 });
                     
-                usernamesAdded++;           
+                usernamesAdded++;              
             });
-            console.log(data)
+            console.log('Users: ', data)
+
             
         });
     })
@@ -121,8 +132,18 @@ async function getFollowing() {
         // Select the parent element where you want to append the username containers
         const followed_userListContainer = document.querySelector('.follow__structure');
 
-        // Iterate through the list of usernames and create a div container for each user
+        //if empty list of followed users
+        if (data.length === 0){
+            console.log("list is empty, gawan mo na ng display"); 
+            const displayNoFollowedAccs = document.createElement('div');
+            displayNoFollowedAccs.classList.add('follow__structureContainerEmpty');
+            displayNoFollowedAccs.textContent = 'No accounts to display.';
+            followed_userListContainer.appendChild(displayNoFollowedAccs);               
+        }
+        else {
+            // Iterate through the list of usernames and create a div container for each user
         data.forEach((username) => {
+
             // Create a new div element for the username container
             const followed_structureContainer = document.createElement('div');
             followed_structureContainer.classList.add('follow__structureContainer');
@@ -149,6 +170,8 @@ async function getFollowing() {
                 window.location.href = `profile.html?username=${encodeURIComponent(username)}`;
             });
         });
+
+        }
         return data;
 
     } catch (error) {
@@ -183,9 +206,6 @@ document.addEventListener("DOMContentLoaded", function() {
     addSuggestedUserClickListeners();
 });
 
-// function refreshFollowingPage() {
-//     window.location.reload(true); // Reloads the page from the server, ignoring the cache
-// }
 
 function logOut(event) {
     window.location.href = "login.html";
