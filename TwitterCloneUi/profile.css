@@ -459,18 +459,6 @@ button {
   transform: translateY(-50%);
 }
 
-.heart-button-container {
-  /* display: flex;
-  align-items: center;
-  justify-content: space-between;
-  transition: all 300ms ease;
-  background-color: transparent;
-  border: none;
-  height: 20px;
-  width: 40px;
-  align-items: center; */
-}
-
 .tweet-content {
   padding-left: 15px;
 }
