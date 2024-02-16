@@ -174,8 +174,6 @@ function followUnfollow_initial(){
   }
 }
 
-
-
 //FUNCTION FOR GETTING USER POSTS
 async function fetchProfilePost(){
   const token = localStorage.getItem("token");
@@ -255,15 +253,13 @@ function refreshProfilePage() {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  
   displayNavUsername();
   displayTweetUsername();
   displayFollowBtn();
   followUnfollow_initial();
-  fetchProfilePost();
-  
-
 });
+
+document.addEventListener("DOMContentLoaded", fetchProfilePost());
 
 
 function logOut(event) {
