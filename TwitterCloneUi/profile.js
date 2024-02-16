@@ -166,8 +166,11 @@ async function followUnfollow(classID) {
 function followUnfollow_initial() {
   const followButton = document.querySelector(".follow-btn-1");
   const username = getQueryParam("username");
+
+  // Get the follow status from local storage
   const initialStatus = getFollowStatusFromLocalStorage(username);
 
+  // Set the initial text of the follow button based on the follow status
   if (initialStatus === "followed") {
     followButton.textContent = "Following";
   } else {
