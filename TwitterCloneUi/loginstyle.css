@@ -7,15 +7,12 @@
     box-sizing: border-box;
 }
 
-body{
+body {
     display: flex;
     height: 100vh;
-    margin-width: 1300px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0;
     padding: 0 40px;
-
-    background-image: url(./assets/push.gif);
+    background-image: url(./assets/sonata2.gif);
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
@@ -24,35 +21,33 @@ body{
 
 #loginORsignup {
     display: none;
-    position:relative;
-    align-items: center;
-    justify-content:center;
-    top: 35%;
-    left: 45%;
+    position: relative;
+    top: 28%;
+    left: 40%;
     width: 350px;
-    height: 320px;
+    height: 350px; /* Adjusted height to match width for a circular shape */
     background: black;
-    background-image: url(./assets/oasispngdesign.jpg);
+    background-image: url(./assets/sonata.gif);
+    backdrop-filter: blur(15px);
     background-position: center;
-    border-radius: 300px;
+    border-radius: 50%; /* Set border-radius to 50% to make it a circle */
     z-index: 2;
     transition: left 0.5s, top 0.5s;
 }
 
 #oasisbtn {
     display: flex;
-    position:absolute;
-    top: 35%;
-    left: 45%;
-    width: 350px;
-    height: 320px;
+    position: absolute;
+    top: 28%;
+    left: 40%;
+    width: 350px; /* Adjust the width and height to match the smaller dimension */
+    height: 350px; /* Adjust the width and height to match the smaller dimension */
     background: black;
-    background-image: url(./assets/oasispngdesign.jpg);
+    background-image: url(./assets/sonata.gif);
     background-position: center;
-    border-radius: 300px;
+    border-radius: 50%; /* Set border-radius to 50% to make it a circle */
     z-index: 2;
 }
-
 
 #login-box{
     background-color: rgba(240, 240, 240, 0.2);
@@ -60,26 +55,24 @@ body{
     width: 550px;
     position: absolute;
     display: block;
-    /*top: 30%;
-    left: 37%;*/
-    top:30%;
-    left:10%;
+    top:23%;
+    left:5%;
     transform: scale(0);
     transition: transform 0.5s ease;
     text-align: center;
-    border-radius: 20px;
+    border-radius: 12px;
     backdrop-filter: blur(10px);
     box-shadow: 0 4px 6px rgb(1, 1, 1, 0.1);
 }
 
-#login-box button{
+#login-box button {
     width: 100%;
     padding: 10px 0;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 20px 0;
-    border-radius: 30px;
+    border-radius: 30px; /* Adjust border-radius to half of the button's height to make it a circle */
     background: transparent;
     border: 1px solid #999;
     font-weight: 500;
@@ -137,14 +130,12 @@ body{
     width: 550px;
     position: absolute;
     display: block;
-    /*top: 23%;
-    left: 37%;*/
-    top: 23%;
+    top: 20%;
     left: 60%;
     transform: scale(0);
     transition: transform 0.5s ease;
     text-align: center;
-    border-radius: 20px;
+    border-radius: 12px;
     backdrop-filter: blur(10px);
     box-shadow: 0 4px 6px rgb(1, 1, 1, 0.1);
 }
