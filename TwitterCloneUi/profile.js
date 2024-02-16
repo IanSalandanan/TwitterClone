@@ -178,10 +178,11 @@ function followUnfollow_initial() {
 //FUNCTION FOR GETTING USER POSTS
 document.addEventListener("DOMContentLoaded", function() {
   const token = localStorage.getItem("token");
-  //const loggedInUsername = localStorage.getItem("username"); // Retrieve the logged-in username
-
+  const loggedInUsername = localStorage.getItem("username"); // Retrieve the logged-in username
   const urlParams = new URLSearchParams(window.location.search);
   const suggestedUsername = urlParams.get("username"); // Retrieve the suggested username from the URL query parameters
+
+  const tweetContainer = document.querySelector(".twatter-profile-feed");
 
   fetch("http://localhost:3000/api/v1/posts", {
       method: "GET",
@@ -194,21 +195,34 @@ document.addEventListener("DOMContentLoaded", function() {
       return response.json();
   })
   .then(function(posts) {
-      const tweetContainer = document.querySelector(".twatter-profile-feed");
+    const followed_userListContainer = document.querySelector('.twatter-profile-feed');
 
       posts.forEach(function(post) {
-          if ((suggestedUsername && post.postedBy === suggestedUsername) || (!suggestedUsername && post.postedBy === logged_username)) {
+          if (suggestedUsername && post.postedBy === suggestedUsername) {
+              const tweetDiv = createTweetElement(post);
+              tweetContainer.appendChild(tweetDiv);
+          } else if (!suggestedUsername && post.postedBy === logged_username) {
               const tweetDiv = createTweetElement(post);
               tweetContainer.appendChild(tweetDiv);
           }
       });
+      
+      if (!tweetContainer.children.length) {
+          const messageElement = document.createElement("div");
+          messageElement.classList.add("twatter-profile-feedContainerEmpty");
+          messageElement.textContent = "Follow this user to see their posts";
+          tweetContainer.appendChild(messageElement);
+      }
+  })
+  .catch(function(error) {
+      console.error('Error fetching posts:', error);
   });
 
   function createTweetElement(post) {
-      const tweetDiv = document.createElement("div");
-      tweetDiv.classList.add("twatter-profile-tweet");
+    const tweetDiv = document.createElement("div");
+    tweetDiv.classList.add("twatter-profile-tweet");
 
-      const avatarDiv = document.createElement("div");
+    const avatarDiv = document.createElement("div");
     avatarDiv.classList.add("follow__avatar");
     avatarDiv.innerHTML =
       '<span class="tweet-prof-avatar material-symbols-outlined">account_circle</span>';
@@ -239,6 +253,7 @@ document.addEventListener("DOMContentLoaded", function() {
     return tweetDiv;
   }
 });
+
 
 // connected siya kay following - para ma-change yung profile name at username kay suggested user & followed user
 document.addEventListener("DOMContentLoaded", function () {
