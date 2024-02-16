@@ -83,10 +83,14 @@ function logSign(){
     if (this.id === 'signup-btn') {
         x.style.transform = 'scale(0)';
         y.style.transform = 'scale(1)';
+        z.style.transform = 'scaleY(1)';
+        z.style.transform = 'scaleX(1)';
         z.style.left = '28%';
     } else {
         x.style.transform = 'scale(1)';
         y.style.transform = 'scale(0)';
+        z.style.transform = 'scaleY(-1)';
+        z.style.transform = 'scaleX(-1)';
         z.style.left = '48%';
     }
 }
@@ -95,9 +99,9 @@ function start(){
     let oasisstart = document.getElementById('oasisbtn');
     let x = document.getElementById('login-box');
     let z = document.getElementById('loginORsignup');
-    oasisstart.style.display = 'none';
+    oasisstart.style.transform='scale(0)';
     x.style.transform='scale(1)';
-    z.style.display = 'block';
+    z.style.display='block';
 }
 
 var startbtn = document.getElementById('oasisbtn');
