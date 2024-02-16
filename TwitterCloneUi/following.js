@@ -151,7 +151,7 @@ async function getFollowing() {
             // Set the inner HTML of the username container to include the username and follow button
             followed_structureContainer.innerHTML = `
                 <div class="follow__avatar" alt="avatar">
-                    <span class="material-symbols-outlined">account_circle</span>
+                <img src="./assets/catdp1.avif" alt="Profile" id="profile-pic2">
                 </div>
                 <div class="follow__body">
                     <div class="follow__userHeader">
