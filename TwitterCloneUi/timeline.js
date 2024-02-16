@@ -283,7 +283,7 @@ async function changeLikeText() {
 
       if (liked) {
         likeTextElement.innerHTML = 'Liked &nbsp;';
-        likeTextElement.style.color = 'white';
+        likeTextElement.style.color = 'pink';
       } else {
         likeTextElement.innerHTML = 'Like &nbsp;';
       }

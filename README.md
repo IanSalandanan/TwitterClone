@@ -17,6 +17,8 @@ ___
 - Through great communication, we easily prevented conflicts in changes of codes with each other. We kept each other updated for every push or changes that we did on our codes, no matter how big or small the changes are. By using a multi-page html, this also prevented us from having code changes conflicts.
 
 ### How could we improve our website in the future?
+
+- We could improve our website even more by learning the advanced syntaxs of JavaScript, as we had quite some trouble in using the APIs. Overall, a few more practice and knowledge would definitely help us in improving our future works.
 - We could improve our website even more by learning the advanced syntaxes of JavaScript, as we had quite some trouble in using the APIs. Overall, a few more practice and knowledge would definitely help us in improving our future works. 
 
 
