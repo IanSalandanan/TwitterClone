@@ -192,6 +192,7 @@ async function patchLikeId(postId, token) {
     }
 
     await fetch(requestUrl, requestMethod);
+    window.location.reload();
     
   } catch (error) {
     console.error(`Error fetching likes: ${error}`);
@@ -254,10 +255,48 @@ async function GetTrends() {
   }
 }
 
+// CHANGE LIKE TO LIKED TEXT FUNCTION -------------------------------------------------------------------------------------------------------------------------
+async function changeLikeText() {
+  try {
+    const requestUrl = 'http://localhost:3000/api/v1/posts';
+    const requestMethod = {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${token}`,
+        Accept: 'application/json',
+      },
+    };
+
+    const response = await fetch(requestUrl, requestMethod);
+    if (!response.ok) {
+      throw new Error(`Failed to fetch posts`);
+    }
+
+    const posts = await response.json();
+
+    const likeTextElements = document.querySelectorAll('.like-text');
+
+    posts.forEach((post, index) => {
+      const liked = post.likes.includes(logged_username);
+
+      const likeTextElement = likeTextElements[index];
+
+      if (liked) {
+        likeTextElement.innerHTML = 'Liked &nbsp;';
+        likeTextElement.style.color = 'white';
+      } else {
+        likeTextElement.innerHTML = 'Like &nbsp;';
+      }
+    });
+  } catch (error) {
+    console.error(`Error fetching posts: ${error}`);
+  }
+}
 
 // EVENT LISTENERS FOR WHEN THE PAGE ELEMENTS HAS LOADED ------------------------------------------------------------------------------------------------------
 document.addEventListener("DOMContentLoaded", function() {
   displayUsername();
   fetchPosts();
   GetTrends();
+  changeLikeText();
 });
