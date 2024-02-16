@@ -363,18 +363,15 @@ button {
 }
 
 /* TWATTER PROFILE FEED */
-
 .twatter-profile-feed {
+  /*REVISED CSS FOR FEED*/
   display: flex;
   flex-direction: column;
   justify-content: left;
   margin-top: 20px;
   margin-left: 33px;
-  height: 64vh;
   width: 100vh;
   border-radius: 20px;
-  /* max-height: fit-content; */
-
   background: rgba(255, 255, 255, 0.2);
   padding: 20px;
   backdrop-filter: blur(10px);
