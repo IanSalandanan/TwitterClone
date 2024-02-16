@@ -83,11 +83,11 @@ function logSign(){
     if (this.id === 'signup-btn') {
         x.style.transform = 'scale(0)';
         y.style.transform = 'scale(1)';
-        z.style.left = '35%';
+        z.style.left = '28%';
     } else {
         x.style.transform = 'scale(1)';
         y.style.transform = 'scale(0)';
-        z.style.left = '40%';
+        z.style.left = '48%';
     }
 }
 

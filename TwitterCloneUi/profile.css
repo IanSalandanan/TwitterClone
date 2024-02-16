@@ -64,8 +64,8 @@ body {
 .profile-icon-avatar {
   width: 70px;
   height: 70px;
-
   border-radius: 50%;
+  cursor: default;
 }
 
 .prof-nav {
@@ -239,9 +239,10 @@ a {
 }
 
 #nav-profile-username {
-  margin-top: 4px;
   font-size: 1.17rem;
   font-weight: bold;
+  font-family: poppins;
+  cursor: default;
 }
 
 /*PROFILE MAIN CONTENT*/
