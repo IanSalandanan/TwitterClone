@@ -61,9 +61,10 @@ body {
   scrollbar-width: none;
 }
 
-.profile-icon-avatar{
+.profile-icon-avatar {
   width: 70px;
-  
+  height: 70px;
+
   border-radius: 50%;
 }
 
@@ -585,4 +586,10 @@ button {
 .material-symbols-outlined.prof-nav-icon {
   font-size: 35px;
   margin-top: -2px;
+}
+
+.profile-feed-icon {
+  height: 130px;
+  width: 130px;
+  border-radius: 50%;
 }
