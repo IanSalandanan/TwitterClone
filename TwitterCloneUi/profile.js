@@ -1,4 +1,4 @@
-// DISPLAY USERNAME IN NAV
+
 function getUsernameFromLocalStorage() {
   const token = localStorage.getItem("token");
   if (token) {
@@ -24,7 +24,6 @@ function displayNavUsername() {
   }
 }
 
-//DISPLAY USERNAME INSIDE THE TWEET
 function displayTweetUsername() {
   const tweetUsernameElement = document.getElementById("user-tweet-username");
   if (tweetUsernameElement !== null) {
@@ -32,20 +31,16 @@ function displayTweetUsername() {
   }
 }
 
-// Function to parse URL query parameters (to get username to follow and unfollow)
+//get username from url
 function getQueryParam(name) {
   const urlParams = new URLSearchParams(window.location.search);
   return urlParams.get(name);
 }
 
-// ito yung pagtanggal kay follow button kapag nasa profile ni logged in user
-
 function displayFollowBtn() {
-  // Read the username from the URL parameter
   const urlParams = new URLSearchParams(window.location.search);
   const URLusername = urlParams.get("username");
 
-  // Check if the username matches the username of the currently logged-in user
   if (URLusername && URLusername !== logged_username) {
     const followButtonContainer = document.querySelector(".user-tab-4");
     const followButton = document.createElement("button");
@@ -81,6 +76,7 @@ async function followUser(usernameToFollow) {
     } else {
       console.log(`Followed: ${usernameToFollow}`);
       const status = "followed";
+      window.location.reload(); 
       return status;
     }
   } catch (error) {
@@ -109,6 +105,7 @@ async function unfollowUser(usernameToUnfollow) {
     } else {
       console.log(`Unfollowed: ${usernameToUnfollow}`);
       const status = "unfollowed";
+      window.location.reload(); 
       return status;
     }
   } catch (error) {
@@ -117,7 +114,6 @@ async function unfollowUser(usernameToUnfollow) {
 }
 
 //FOLLOW OR UNFOLLOW MECHANISM
-
 async function updateFollowStatusInLocalStorage(username, status) {
   const followStatus = localStorage.setItem(
     `loggedUser_${logged_username} followStatus_${username}`,
@@ -131,7 +127,7 @@ function getFollowStatusFromLocalStorage(username) {
   );
 }
 
-// Function to toggle follow/unfollow status
+//change follow status
 async function toggleFollowStatus(username) {
   const currentStatus = getFollowStatusFromLocalStorage(username);
   let newStatus;
@@ -144,12 +140,11 @@ async function toggleFollowStatus(username) {
   updateFollowStatusInLocalStorage(username, newStatus);
 }
 
-// Usage example:
+//updated follow status with fetch api
 async function followUnfollow(classID) {
   const followButton = document.querySelector("." + classID);
   const username = getQueryParam("username");
 
-  // Toggle follow/unfollow status
   await toggleFollowStatus(username);
 
   // Update button text based on new status
@@ -163,6 +158,7 @@ async function followUnfollow(classID) {
   }
 }
 
+//updated status with
 function followUnfollow_initial() {
   const followButton = document.querySelector(".follow-btn-1");
   const username = getQueryParam("username");
@@ -175,16 +171,12 @@ function followUnfollow_initial() {
   }
 }
 
-// function refreshProfilePage() {
-//   window.location.reload(true); // Reloads the page from the server, ignoring the cache
-// }
 
-//FUNCTION FOR GETTING USER POSTS
 async function fetchProfilePost() {
   document.addEventListener("DOMContentLoaded", function () {
     const token = localStorage.getItem("token");
     const urlParams = new URLSearchParams(window.location.search);
-    const suggestedUsername = urlParams.get("username"); // Retrieve the suggested username from the URL query parameters
+    const suggestedUsername = urlParams.get("username"); 
     const followButton = document.querySelector(".follow-btn-1");
 
     fetch("http://localhost:3000/api/v1/posts", {
@@ -209,16 +201,16 @@ async function fetchProfilePost() {
         }
 
         posts.forEach(function (post) {
+          // logged-in user tweets
           if (!suggestedUsername && post.postedBy === logged_username) {
-            // Display the logged-in user's tweets in their profile page
+            
             const tweetDiv = createTweetElement(post);
             tweetContainer.appendChild(tweetDiv);
+          // suggested user tweets
           } else if (suggestedUsername && post.postedBy === suggestedUsername) {
-              // Display the suggested user's tweets in their profile page
-              const tweetDiv = createTweetElement(post);
-              tweetContainer.appendChild(tweetDiv);
-          }
-          
+            const tweetDiv = createTweetElement(post);
+            tweetContainer.appendChild(tweetDiv);
+          }        
         });
       })
       .catch(function (error) {
@@ -236,7 +228,7 @@ async function fetchProfilePost() {
       const imgElement = document.createElement("img");
       imgElement.src = "./assets/catdp1.avif";
       imgElement.alt = "Profile Icon";
-      imgElement.classList.add("profile-feed-icon", "profile-feed-icon-2"); // Add custom-size class for sizing
+      imgElement.classList.add("profile-feed-icon", "profile-feed-icon-2"); 
 
       avatarDiv.appendChild(imgElement);
       tweetDiv.appendChild(avatarDiv);
@@ -267,7 +259,7 @@ async function fetchProfilePost() {
   });
 }
 
-// connected siya kay following - para ma-change yung profile name at username kay suggested user & followed user
+//profile page username mechanism for suggested user and followed user
 document.addEventListener("DOMContentLoaded", function () {
   const urlParams = new URLSearchParams(window.location.search);
   let username = urlParams.get("username");
@@ -279,17 +271,13 @@ document.addEventListener("DOMContentLoaded", function () {
   profileUsernameElement.textContent = username;
 });
 
-function refreshProfilePage() {
-  window.location.reload(true); // Reloads the page from the server, ignoring the cache
-}
-
 async function getLikes(event) {
   try {
     const postContainer = event.target.closest(".twatter-profile-tweet");
     const content = postContainer.querySelector(".tweet-text").textContent;
     const poster = postContainer.querySelector(".tweet-profile-name").innerText;
 
-    const token = localStorage.getItem("token"); // Get the token from localStorage
+    const token = localStorage.getItem("token"); 
 
     const requestUrl = "http://localhost:3000/api/v1/posts";
     const requestMethod = {
@@ -341,19 +329,15 @@ async function patchLikeId(postId, token) {
 
 async function toggleLike(button) {
   try {
-    // Check if the button is already liked
     const isLiked = button.dataset.liked === "true";
 
     if (isLiked) {
-      // Unlike the post
-      // Code to remove like data goes here
-      button.style.color = ""; // Reset the color to default
-      button.dataset.liked = "false"; // Update the dataset to reflect unliking
+      button.style.color = ""; 
+      button.dataset.liked = "false"; 
     } else {
-      // Like the post
       await getLikes(event);
-      button.style.color = "pink"; // Change the color to indicate liking
-      button.dataset.liked = "true"; // Update the dataset to reflect liking
+      button.style.color = "pink"; 
+      button.dataset.liked = "true"; 
     }
   } catch (error) {
     console.error(`Error toggling like: ${error}`);
@@ -372,4 +356,8 @@ document.addEventListener("DOMContentLoaded", fetchProfilePost());
 function logOut(event) {
   window.location.href = "login.html";
   localStorage.removeItem("token");
+}
+
+function refreshProfilePage() {
+  window.location.reload(); 
 }
