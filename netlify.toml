@@ -11,3 +11,6 @@ force = true
 from = "/api/*"
 status = 200
 to = "/.netlify/functions/api/:splat"
+
+[context.production.environment]
+NODE_ENV = "production"

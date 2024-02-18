@@ -17,7 +17,7 @@ function withErrorHandling(func) {
       if (error.name === BadRequestError.Name) {
         return res.status(400).send(error.message);
       }
-      throw error;
+      return res.status(500).send(`Internal server error: ${error.message}`);
     }
   };
 }

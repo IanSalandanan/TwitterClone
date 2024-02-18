@@ -9,6 +9,7 @@ import postsRoutes from "./routes/PostsRoutes.js";
 import usersRoutes from "./routes/UsersRoutes.js";
 import followersRoutes from "./routes/FollowersRoutes.js";
 import openApiSpecs from "./docs/openapi.json" assert { type: "json" };
+import filesRoutes from "./routes/FilesRoutes.js";
 
 const app = express();
 
@@ -24,5 +25,6 @@ app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/posts", postsRoutes);
 app.use("/api/v1/users", usersRoutes);
 app.use("/api/v1/users", followersRoutes);
+app.use("/api/v1/files", filesRoutes);
 
 export default app;

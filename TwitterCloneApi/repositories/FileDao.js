@@ -3,7 +3,7 @@ import path from "path";
 import dotenv from "dotenv";
 dotenv.config();
 
-const rootFolder = process.env["DATA_FOLDER"] ?? "/tmp";
+const rootFolder = process.env.NODE_ENV === "development" ? "../TEMP" : "/tmp";
 
 function saveData(key, value) {
   ensureRootFolderExists();
